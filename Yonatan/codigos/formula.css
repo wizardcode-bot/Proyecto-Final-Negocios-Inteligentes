@@ -10,18 +10,35 @@
 }
 /* Estilos generales */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+	background: linear-gradient(to bottom right, #AED6F1, #F9EBB2);
     margin: 0;
     padding: 0;
+    line-height: 1.6; /* Ajusta el espaciado entre líneas */
 }
 
 .titulo {
-    background-color: #333;
-    color: white;
+	background-color: rgba(255, 0, 0, 0.192);
+    color: rgb(0, 0, 0);
     text-align: center;
     padding: 20px;
-    margin-top: 100px;
+	padding-top: 120px;
+	
+	
+}
+
+.content h2,
+.content p,
+.content ol,
+.content ul {
+    margin-bottom: 25px; /* Ajusta el margen inferior */
+    margin-left: 20px;   /* Ajusta el margen izquierdo */
+    margin-right: 20px;  /* Ajusta el margen derecho */
+}
+
+.content img {
+    margin-bottom: 20px; /* Ajusta el margen inferior de las imágenes */
+	border-radius: 5px;
 }
 
 .titulo h1 {
@@ -29,7 +46,7 @@ body {
 }
 
 main {
-    max-width: 800px;
+    max-width: 900px;
     margin: 0 auto;
     padding: 20px;
 }
@@ -192,12 +209,4 @@ nav ul li a .cuarto {
 
 	  display: none;
 	}
-	.footer-content {
-        flex-direction: column;
-    }
-
-    .footer-right .subscribe-form {
-        margin-top: 10px;
-    }
   }
-

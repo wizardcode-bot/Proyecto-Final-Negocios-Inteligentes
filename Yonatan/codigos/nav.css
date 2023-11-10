@@ -56,12 +56,13 @@ nav > ul > li > ul {
 	left:0;
 	right:0;
 	overflow:hidden;
-	height:0%;
+	height:0;
 	-webkit-transition: all .3s ease;
 	-moz-transition: all .3s ease;
 	-ms-transition: all .3s ease;
 	-o-transition: all .3s ease;
 	transition: all .3s ease;
+
 }
 /*lo que contienen la barra de navegacion*/
 nav > ul li a {
