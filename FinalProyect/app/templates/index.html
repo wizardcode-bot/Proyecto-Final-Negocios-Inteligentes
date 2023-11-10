@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>index</title>
+    <!-- llama al archivo css -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='Css/estilos.css') }}">
+</head>
+<body>
+    <h1>{{ data.titulo }}</h1>
+    <!-- Muestra los dato en una lista desordenada -->
+    <ul>
+        {% for c in data.cursos %}
+        <li>{{ c }}</li>
+        {% endfor %}
+    </ul>
+    <!-- llama al archivo javascrip -->
+    <script src="{{ url_for('static', filename='Js/layout.js') }}"></script>
+</body>
+</html>
