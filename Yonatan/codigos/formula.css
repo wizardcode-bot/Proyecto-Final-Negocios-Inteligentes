@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@900&display=swap');
-/*Al principio de cada css se le da esta especificacion para que no tenga nada por defecto*/
+
 *,
 *::before,
 *::after
@@ -8,14 +8,64 @@
 	padding:0;
     box-sizing: inherit;
 }
-
-body{
-    font-family: 'Poppins', sans-serif;
-    background-color:lavender;
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
 }
 
- header{
-    position: fixed;
+.titulo {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 100px;
+}
+
+.titulo h1 {
+    font-size: 40px;
+}
+
+main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.content {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+img {
+    max-width: 100%;
+    height: auto;
+    display: block; /* Para evitar espacios no deseados */
+    margin: 0 auto; /* Centrar la imagen horizontalmente */
+}
+
+/* Media query para pantallas más pequeñas (por ejemplo, dispositivos móviles) */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 28px;
+    }
+    
+    main {
+        padding: 10px;
+    }
+    
+    .content {
+        padding: 10px;
+    }
+}
+
+/*Nav*/
+header{
+    position: absolute;
     top: 0;
     left: 0;
     right: 0;
@@ -25,6 +75,7 @@ body{
     align-items: center;
     justify-content: space-between;
     letter-spacing: 1px; 
+    font-family: 'Poppins', sans-serif;
  }
 
 /*Titulo*/
@@ -45,11 +96,11 @@ body{
 nav > ul > li:hover > ul {
 	display:flex;
 	height:100%;
-    width: 17.9%;
+    width: auto;
     left: 722px;
     letter-spacing: 1px; 
 }
-
+/*formula y medicion*/
 nav > ul > li > ul {
 	display:block;
 	position:absolute;
@@ -83,9 +134,7 @@ nav > ul li a {
 nav > ul > li > ul > li a:hover {
 	background:#5da5a2;
 }
-/*El efecto de bajada*/
 nav > ul > li > a span {
-	background:#174459;
 	display:block;
 	height:100%;
 	width:100%;
@@ -140,7 +189,15 @@ nav ul li a .cuarto {
 	  top: 100%;
 	  left: 0;
 	  right: 0;
-	  background-color: blue;
+
 	  display: none;
 	}
+	.footer-content {
+        flex-direction: column;
+    }
+
+    .footer-right .subscribe-form {
+        margin-top: 10px;
+    }
   }
+

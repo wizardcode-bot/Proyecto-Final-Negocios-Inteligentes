@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@900&display=swap');
+/*Al principio de cada css se le da esta especificacion para que no tenga nada por defecto*/
 *,
 *::before,
 *::after
@@ -6,12 +8,13 @@
 	padding:0;
     box-sizing: inherit;
 }
+
  body{
     display: flex;
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    background-color: white;
+    margin-top: 100px; 
  }
 
  .container .img_container{
@@ -116,4 +119,226 @@
     font-family: Arial, sans-serif; /* Cambiar la fuente de la "x" */
     text-decoration: none; /* Eliminar subrayado (si es un enlace) */
     border-radius: 10px; /* Ajustar la esquina para que sea más esquinera */
+}
+
+header{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(1, 1, 1, 0.192);
+    padding: 0px 10%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    letter-spacing: 1px; 
+    font-family: 'Poppins', sans-serif;
+ }
+
+/*Titulo*/
+.logo{
+	font-size: 25px;
+	text-transform: uppercase;
+	color: white;
+	font-weight: 700px;
+}
+
+
+.header .navigation ul li {
+    float: left;
+    display: table-cell;
+}
+
+
+nav > ul > li:hover > ul {
+	display:flex;
+	height:100%;
+    width: auto;
+    left: 722px;
+    letter-spacing: 1px; 
+}
+/*formula y medicion*/
+nav > ul > li > ul {
+	display:block;
+	position:absolute;
+	background-color: rgba(1, 1, 1, 0.192);
+	left:0;
+	right:0;
+	overflow:hidden;
+	height:0%;
+	-webkit-transition: all .3s ease;
+	-moz-transition: all .3s ease;
+	-ms-transition: all .3s ease;
+	-o-transition: all .3s ease;
+	transition: all .3s ease;
+}
+/*lo que contienen la barra de navegacion*/
+nav > ul li a {
+	color:#fff;
+	display:block;
+	line-height:20px;
+	padding:20px;
+	position: relative;
+	text-align:center;
+	text-decoration:none;
+	-webkit-transition: all .3s ease;
+	-moz-transition: all .3s ease;
+	-ms-transition: all .3s ease;
+	-o-transition: all .3s ease;
+	transition: all .3s ease;
+}
+
+nav > ul > li > ul > li a:hover {
+	background:#5da5a2;
+}
+nav > ul > li > a span {
+	display:block;
+	height:100%;
+	width:100%;
+	left:0;
+	position:absolute;
+	top:-55px;
+	-webkit-transition: all .3s ease;
+	-moz-transition: all .3s ease;
+	-ms-transition: all .3s ease;
+	-o-transition: all .3s ease;
+	transition: all .3s ease;
+}
+/*Donde se esconde la barra del icon*/
+nav > ul > li > a span .icon {
+	display:block;
+	line-height:60px;
+}
+
+nav > ul > li > a:hover > span {
+	top:0;
+}
+
+/*Color al icon cuando baje*/
+nav ul li a .primero {
+	background:#0e5061;
+}
+
+nav ul li a .segundo {
+	background:#5da5a2;
+}
+
+nav ul li a .tercero {
+	background:#f25724;
+}
+
+nav ul li a .cuarto {
+	background:#174459;
+}
+
+/*Para el responsive se le da caracteristicas para un movil*/
+@media (max-width: 950px) {
+	.header label {
+	  display: initial;
+	}
+  
+	.header {
+	  padding: 20px 10%;
+	}
+  
+	.header .navigation {
+	  position: absolute;
+	  top: 100%;
+	  left: 0;
+	  right: 0;
+
+	  display: none;
+	}
+  }
+
+/*footer*/
+
+/* Estilos para el footer */
+.footer {
+    position: absolute;
+    bottom: 0;
+    background-color: #3333333d;
+    color: white;
+    text-align: center;
+    width: 100%;
+    padding: 30px 0px;
+    
+    
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+
+.footer h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.footer-left ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-left ul li {
+    margin-bottom: 5px;
+}
+
+.footer-left ul li a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-left ul li a:hover {
+    color: #5da5a2;
+}
+
+.footer-center p {
+    margin-bottom: 15px;
+}
+
+.footer-right .subscribe-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-right .subscribe-form input[type="email"] {
+    width: 92%;
+    padding: 10px;
+    margin-bottom: 5px;
+}
+
+/* Estilos para el botón de suscribirse */
+.footer-right .subscribe-form button {
+    background-color: #5da5a2;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    outline: none; /* Elimina el borde de enfoque en algunos navegadores */
+}
+
+/* Estilos de apariencia para el botón sin cambiar su comportamiento */
+.footer-right .subscribe-form button:hover {
+    background-color: #174459;
+}
+
+.footer-bottom {
+    background-color: #00c3ff46;
+    padding: 10px 0;
+}
+
+/* Estilos para los iconos (puedes utilizar tus propias fuentes de iconos) */
+.icon {
+    margin-right: 5px;
+    font-size: 16px;
+}
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+    }
 }
