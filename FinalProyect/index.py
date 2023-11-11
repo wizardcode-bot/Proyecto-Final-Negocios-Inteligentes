@@ -3,8 +3,8 @@ import numpy as np
 from statistics import mode
 import math
 import matplotlib.pyplot as plt
-
-
+from io import BytesIO
+import base64
 
 # Ruta del archivo Excel
 ruta = 'C:\\Users\\HOME\\Downloads\\finalPoyectNegocios\\archivos\\DatosCompletos.xlsx'
@@ -81,16 +81,24 @@ OCT = resultado_lista[0][12]
 NOV = resultado_lista[0][13]
 DIC = resultado_lista[0][14]
 
-Meses = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre']
+# Define las columnas de meses
+#columnas_meses = ['ENE', 'FEB', 'MAR', 'ABR', 'MAY', 'JUN', 'JUL', 'AGO', 'SEP', 'OCT', 'NOV', 'DIC']
+columnas_meses = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+
+#Meses = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre']
 BrilloSolar = [ENE, FEB, MAR, ABR, MAY, JUN, JUL, AGO, SEP, OCT, NOV, DIC]
+
+# Organizar los datos de menor a mayor
+datos_ordenados = sorted(zip(columnas_meses, BrilloSolar), key=lambda x: x[1])
+
+# Imprimir los datos ordenados
+print("")
+for mes, valor in datos_ordenados:
+    print(f"{mes}: {valor}")
 
 #Ordena el arreglo de menor a mayor
 arreglo_ordenado = sorted(BrilloSolar)
 print("")
-#Imprime el arreglo ordenado
-for elemento in arreglo_ordenado:
-    print(elemento)
-
 
 #ESTADÍSTICA
 print("\n MEDIDAS DE TENDENCIA CENTRAL Y MEDIDAS DE DISPERSIÓN")
@@ -111,18 +119,46 @@ print("\nK tiene un valor de: ", k)
 numero3 = float(input("\nIngresa la cantidad de años que quieres estimar: ")) #Entre 2000 y 2020
 if (numero3 > 2026):
     print("Número erróneo")
-numero4= numero3 - 2000
+#numero4= numero3 - 2000
 Estimacion = arreglo_ordenado[0] * math.exp(k * numero3)
 print("\nSu prediccion es de:", round(Estimacion, 4))
 
+#modelo de regresion
+modeloregre = np.polyfit(columnas_meses, arreglo_ordenado, 5)
+predecir = np.poly1d(modeloregre)
+print(modeloregre)
+print(predecir)
+
+cantpredicion = int(input("A que mes quiere predecir: "))
+cantregresion = predecir(cantpredicion)
+# formato de presentación 2f quiere decir 2 decimales despues
+print(f"La cantidad de precipitación(mm) para el mes {cantpredicion} sera de: {cantregresion:.2f}")
+# Modelo Prediccion
+cantpredicion = range(12,  cantpredicion + 1)
+precipitapredi = predecir(cantpredicion)
+
+buffer = BytesIO()#Almacena temporalmente las imagenes
+plt.figure(figsize=(10, 5))  # dimensiones
+# modelo de predicción datos anteriores
+plt.plot(arreglo_ordenado, columnas_meses , 'o-', color='red')
+plt.xlabel('Meses')
+plt.ylabel('Precipitacion')
+plt.title('Regresion y Prediccion')
+plt.grid(True)
+plt.plot(columnas_meses, predecir(columnas_meses), '--',color='green')  # modelo de regresión
+plt.plot(cantpredicion, precipitapredi, '--',color='blue')  # datos predichos
+plt.legend(['Datos', 'Regresión', 'Predicción'])
+plt.show()
+
+'''
 #Grafica de datos
 fig, ax = plt.subplots(figsize=(30, 10))#dimensiones
-ax.plot(Meses, arreglo_ordenado, marker='o', linestyle='-', color='blue') #eje x, eje y
+ax.plot(arreglo_ordenado, columnas_meses, marker='o', linestyle='-', color='blue') #eje x, eje y
 ax.grid(True)
 ax.set_title(f"Distribución Brillo solar y Meses para '{municipio_seleccionado}'")
-ax.set_xlabel('Meses')
-ax.set_ylabel('Brillo solar')
-plt.show()
+ax.set_xlabel('Brillo Solar')
+ax.set_ylabel('Meses')
+plt.show()'''
 
 
 

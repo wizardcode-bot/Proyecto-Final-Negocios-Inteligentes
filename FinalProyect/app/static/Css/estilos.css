@@ -1,3 +1,13 @@
-body{
-    background-color: aquamarine;
+table {
+    border-collapse: collapse; /*Fusiona los bordes de las celdas para que parezca una tabla continua.*/
+}
+
+th, td {
+    border: 1px solid #000000;
+    text-align: left;
+    padding: 4px;
+}
+
+.graficos{
+    width: fit-content;
 }

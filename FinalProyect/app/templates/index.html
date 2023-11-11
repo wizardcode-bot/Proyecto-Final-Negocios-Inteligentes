@@ -8,13 +8,38 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='Css/estilos.css') }}">
 </head>
 <body>
-    <h1>{{ data.titulo }}</h1>
+    <!-- <h1>{{ data }}</h1> -->
+
+    <div class="graficos">
+        <img src="data:image/png;base64,{{ img1 }}"
+            alt="Mi Gráfico"><!--img1 es el nombre con que se le dio en el archivo precipi-->
+         <img src="data:image/png;base64,{{ img2 }}" alt="Mi Gráfico">
+    </div>  
+
     <!-- Muestra los dato en una lista desordenada -->
-    <ul>
+    <!-- <ul>
         {% for c in data.cursos %}
         <li>{{ c }}</li>
         {% endfor %}
-    </ul>
+    </ul> -->
+
+    <table><!-- Tabla -->
+        <thead><!-- Encabezado de la tabla -->
+            <tr><!-- Filas -->
+                <th>Meses</th>
+                <th>Valores</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for mes, valor in datos %}
+            <tr>
+                <td>{{ mes }}</td> <!-- Celdas -->
+                <td>{{ valor }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <!-- grafico -->
     <!-- llama al archivo javascrip -->
     <script src="{{ url_for('static', filename='Js/layout.js') }}"></script>
 </body>
