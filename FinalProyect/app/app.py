@@ -131,19 +131,25 @@ def index():
     print("\nSu prediccion es de:", round(Estimacion, 4))
 
     
-    #modelo de regresion
-    modeloregre = np.polyfit(columnas_meses_numero, arreglo_ordenado, 5)
-    predecir = np.poly1d(modeloregre)
-    print(modeloregre)
-    print(predecir)
+    #MODELO DE REGRESION POLINOMICA 
+    #(Se ajustan las variables a un polinomio de grado 5)
+    coeficientes = np.polyfit(columnas_meses_numero, arreglo_ordenado, 5)
+    #Se crea una función polinómica a partir de los coeficientes
+    funcPolinomial = np.poly1d(coeficientes)
+    print(coeficientes)
+    print(funcPolinomial)
 
-    cantpredicion = int(input("A que mes quiere predecir: "))
-    cantregresion = predecir(cantpredicion)
-    # formato de presentación 2f quiere decir 2 decimales despues
-    print(f"La cantidad de precipitación(mm) para el mes {cantpredicion} sera de: {cantregresion:.2f}")
+    rangoPrediccion = int(input("A que mes quiere predecir: "))
+
+    # Calcula los valores de la función polinómica en el rango dado
+    prediccion = funcPolinomial(rangoPrediccion)
+
+
+    # formato de presentación 2f, 2 decimales despues del punto
+    print(f"La cantidad de Brillo Solar) para el mes {rangoPrediccion} sera de: {prediccion:.2f}")
     # Modelo Prediccion
-    cantpredicion = range(12,  cantpredicion + 1)
-    precipitapredi = predecir(cantpredicion)
+    rangoPrediccion = range(12,  rangoPrediccion + 1)
+    precipitapredi = funcPolinomial(rangoPrediccion)
 
     buffer = BytesIO()#Almacena temporalmente las imagenes
     plt.figure(figsize=(10, 5))  # dimensiones
@@ -153,8 +159,8 @@ def index():
     plt.ylabel('Brillo Solar')
     plt.title('Regresion y Prediccion')
     plt.grid(True)
-    plt.plot(columnas_meses_numero, predecir(columnas_meses_numero), '--',color='green')  # modelo de regresión
-    plt.plot(cantpredicion, precipitapredi, '--',color='blue')  # datos predichos
+    plt.plot(columnas_meses_numero, funcPolinomial(columnas_meses_numero), '--',color='green')  # modelo de regresión
+    plt.plot(rangoPrediccion, precipitapredi, '--',color='blue')  # datos predichos
     plt.legend(['Datos', 'Regresión', 'Predicción'])
     img1 = BytesIO()
     plt.savefig(img1, format='png')
@@ -173,17 +179,7 @@ def index():
     img2.seek(0)
     imagen_datos = base64.b64encode(img2.read()).decode() 
 
-    '''
-    #Grafica de datos
-    fig, ax = plt.subplots(figsize=(30, 10))#dimensiones
-    ax.plot(arreglo_ordenado, columnas_meses, marker='o', linestyle='-', color='blue') #eje x, eje y
-    ax.grid(True)
-    ax.set_title(f"Distribución Brillo solar y Meses para '{municipio_seleccionado}'")
-    ax.set_xlabel('Brillo Solar')
-    ax.set_ylabel('Meses')
-    plt.show()'''
-
-
+    
     return render_template('index.html', data=resultadoNombre, datos=datos_ordenados, mes=mes, valor=valor, img1=imagen_prediccion, img2= imagen_datos)
     #mensaje = "<h1>¡Hola mundo desde Flask!</h1>"
 
