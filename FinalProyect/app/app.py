@@ -121,22 +121,22 @@ def index():
 
 
     # Calcular el resultado
-    k = math.log( arreglo_ordenado[11]/arreglo_ordenado[0]) / 11
-    print("\nK tiene un valor de: ", k)
-    numero3 = float(input("\nIngresa la cantidad de años que quieres estimar: ")) #Entre 2000 y 2020
-    if (numero3 > 2026):
-        print("Número erróneo")
-    #numero4= numero3 - 2000
-    Estimacion = arreglo_ordenado[0] * math.exp(k * numero3)
-    print("\nSu prediccion es de:", round(Estimacion, 4))
+    # k = math.log( arreglo_ordenado[11]/arreglo_ordenado[0]) / 11
+    # print("\nK tiene un valor de: ", k)
+    # numero3 = float(input("\nIngresa la cantidad de años que quieres estimar: ")) #Entre 2000 y 2020
+    # if (numero3 > 2026):
+    #     print("Número erróneo")
+    # #numero4= numero3 - 2000
+    # Estimacion = arreglo_ordenado[0] * math.exp(k * numero3)
+    # print("\nSu prediccion es de:", round(Estimacion, 4))
 
     
     #MODELO DE REGRESION POLINOMICA 
     #(Se ajustan las variables a un polinomio de grado 5)
-    coeficientes = np.polyfit(columnas_meses_numero, arreglo_ordenado, 5)
+    coeficientes = np.polyfit(columnas_meses_numero, arreglo_ordenado, 3)
     #Se crea una función polinómica a partir de los coeficientes
     funcPolinomial = np.poly1d(coeficientes)
-    print(coeficientes)
+    #print(coeficientes)
     print(funcPolinomial)
 
     rangoPrediccion = int(input("A que mes quiere predecir: "))
@@ -146,10 +146,10 @@ def index():
 
 
     # formato de presentación 2f, 2 decimales despues del punto
-    print(f"La cantidad de Brillo Solar) para el mes {rangoPrediccion} sera de: {prediccion:.2f}")
+    print(f"La cantidad de Brillo Solar para el mes {rangoPrediccion} sera de: {prediccion:.2f}")
     # Modelo Prediccion
     rangoPrediccion = range(12,  rangoPrediccion + 1)
-    precipitapredi = funcPolinomial(rangoPrediccion)
+    prediccionGrafica = funcPolinomial(rangoPrediccion)
 
     buffer = BytesIO()#Almacena temporalmente las imagenes
     plt.figure(figsize=(10, 5))  # dimensiones
@@ -157,10 +157,10 @@ def index():
     plt.plot(columnas_meses_numero, arreglo_ordenado , 'o-', color='red')
     plt.xlabel('Meses')
     plt.ylabel('Brillo Solar')
-    plt.title('Regresion y Prediccion')
+    plt.title('Modelo de Regresión Polinómica y Predicción')
     plt.grid(True)
-    plt.plot(columnas_meses_numero, funcPolinomial(columnas_meses_numero), '--',color='green')  # modelo de regresión
-    plt.plot(rangoPrediccion, precipitapredi, '--',color='blue')  # datos predichos
+    plt.plot(columnas_meses_numero, funcPolinomial(columnas_meses_numero), '--',color='green')  # Grafica modelo de regresión
+    plt.plot(rangoPrediccion, prediccionGrafica, '--',color='blue')  # Grafica datos predecidos
     plt.legend(['Datos', 'Regresión', 'Predicción'])
     img1 = BytesIO()
     plt.savefig(img1, format='png')
@@ -172,7 +172,7 @@ def index():
     plt.plot(columnas_meses_numero, arreglo_ordenado , 'o-', color='red')
     plt.xlabel('Meses')
     plt.ylabel('Brillo Solar')
-    plt.title('Regresion y Prediccion')
+    plt.title('Datos de Brillo Solar registrados')
     plt.grid(True)
     img2 = BytesIO()
     plt.savefig(img2, format='png')
@@ -180,7 +180,7 @@ def index():
     imagen_datos = base64.b64encode(img2.read()).decode() 
 
     
-    return render_template('index.html', data=resultadoNombre, datos=datos_ordenados, mes=mes, valor=valor, img1=imagen_prediccion, img2= imagen_datos)
+    return render_template('index.html', data=resultadoNombre, datos=datos_ordenados, mes=mes, valor=valor, img1=imagen_prediccion, img2= imagen_datos, prediccion=prediccion)
     #mensaje = "<h1>¡Hola mundo desde Flask!</h1>"
 
 #Si está en la página principal, llama a la función

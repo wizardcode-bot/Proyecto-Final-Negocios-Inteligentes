@@ -116,7 +116,10 @@ print("La desviacion estandar de el Brillo Solar es:", round(desvEst, 4))
 
 
   # Calcular el resultado
-k = math.log( arreglo_ordenado[11]/arreglo_ordenado[0]) / 11
+# Ajusta manualmente el valor de k
+k_factor = 0.9  # Puedes ajustar este valor según sea necesario
+k = k_factor * (math.log(arreglo_ordenado[11] / arreglo_ordenado[0]) / 11)
+
 print("\nK tiene un valor de: ", k)
 numero3 = float(input("\nIngresa la cantidad de años que quieres estimar: ")) #Entre 2000 y 2020
 if (numero3 > 2026):
@@ -127,7 +130,7 @@ print("\nSu prediccion es de:", round(Estimacion, 4))
 
 # MODELO DE REGRESIÓN POLINÓMICA
 # Se ajustan las variables a un polinomio de grado 5
-coeficientes = np.polyfit(columnas_meses_numero, arreglo_ordenado, 5)
+coeficientes = np.polyfit(columnas_meses_numero, arreglo_ordenado, 6)
 # Se crea una función polinómica a partir de los coeficientes
 func_polinomial = np.poly1d(coeficientes)
 
@@ -140,19 +143,14 @@ regresion_polinomial = func_polinomial(rango_polinomial)
 rango_prediccion = range(12, int(numero3) + 1)
 prediccion_k = arreglo_ordenado[0] * np.exp(k * np.array(rango_prediccion))
 
-# MODELO DE PREDICCIÓN CON "k"
-# Calcula los valores de la función exponencial en el rango dado
-rango_prediccion = range(12, int(numero3) + 1)
-prediccion_k = arreglo_ordenado[0] * np.exp(k * np.array(rango_prediccion))
-
- # Gráfica de la regresión polinómica y la predicción con "k"
+# Gráfica de la regresión polinómica y la predicción con "k"
 plt.figure(figsize=(10, 5))
 plt.plot(columnas_meses_numero, arreglo_ordenado, 'o-', color='red')
 plt.xlabel('Meses')
 plt.ylabel('Brillo Solar')
-plt.title('Regresión Polinómica y Predicción con "k"')
+plt.title('Regresión Polinómica y Predicción con "k" ajustado')
 plt.grid(True)
 plt.plot(rango_polinomial, regresion_polinomial, '--', color='green')  # modelo de regresión
-plt.plot(rango_prediccion, prediccion_k, '--', color='blue')  # datos predichos con "k"
-plt.legend(['Datos', 'Regresión Polinómica', 'Predicción con "k"'])
+plt.plot(rango_prediccion, arreglo_ordenado[0] * np.exp(k * np.array(rango_prediccion)), '--', color='blue')  # datos predichos con "k" ajustado
+plt.legend(['Datos', 'Regresión Polinómica', 'Predicción con "k" ajustado'])
 plt.show()
