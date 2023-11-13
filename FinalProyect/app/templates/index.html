@@ -10,7 +10,52 @@
 <body>
     <!-- <h1>{{ data }}</h1> -->
 
-    <h1>Bienvenido a mi página Web!!</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Municipio</th>
+                <th>Departamento</th>
+                <th>Enero</th>
+                <th>Febrero</th>
+                <th>Marzo</th>
+                <th>Abril</th>
+                <th>Mayo</th>
+                <th>Junio</th>
+                <th>Julio</th>
+                <th>Agosto</th>
+                <th>Septiembre</th>
+                <th>Octubre</th>
+                <th>Noviembre</th>
+                <th>Diciembre</th>
+                <th>Anual</th>
+                <!-- Agrega más columnas según las necesidades -->
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in resultado_municipio %}
+                <tr>
+                    <td>{{ item['Nombre'] }}</td>
+                    <td>{{ item['Municipio'] }}</td>
+                    <td>{{ item['Departamento'] }}</td>
+                    <td>{{ item['Enero'] }}</td>
+                    <td>{{ item['Febrero'] }}</td>
+                    <td>{{ item['Marzo'] }}</td>
+                    <td>{{ item['Abril'] }}</td>
+                    <td>{{ item['Mayo'] }}</td>
+                    <td>{{ item['Junio'] }}</td>
+                    <td>{{ item['Julio'] }}</td>
+                    <td>{{ item['Agosto'] }}</td>
+                    <td>{{ item['Septiembre'] }}</td>
+                    <td>{{ item['Octubre'] }}</td>
+                    <td>{{ item['Noviembre'] }}</td>
+                    <td>{{ item['Diciembre'] }}</td>
+                    <td>{{ item['Anual'] }}</td>
+                    <!-- Ajusta según las columnas en tu DataFrame -->
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 
     <div class="graficos">
         <img src="data:image/png;base64,{{ img1 }}"
@@ -45,6 +90,10 @@
     </table>
     <!-- grafico -->
     <!-- llama al archivo javascrip -->
+
+    
+    
+
     <script src="{{ url_for('static', filename='Js/layout.js') }}"></script>
 </body>
 </html>

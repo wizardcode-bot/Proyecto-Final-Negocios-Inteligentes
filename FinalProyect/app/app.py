@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect, url_for
 import pandas as pd
 import numpy as np
 from statistics import mode
@@ -179,9 +179,20 @@ def index():
     img2.seek(0)
     imagen_datos = base64.b64encode(img2.read()).decode() 
 
+    # Convertir resultadoMunicipio a una lista de diccionarios para pasar a la plantilla
+    resultado_municipio_lista = resultadoMunicipio.to_dict(orient='records')
+
     
-    return render_template('index.html', data=resultadoNombre, datos=datos_ordenados, mes=mes, valor=valor, img1=imagen_prediccion, img2= imagen_datos, prediccion=prediccion)
-    #mensaje = "<h1>¡Hola mundo desde Flask!</h1>"
+    return render_template('index.html', data=resultadoNombre, datos=datos_ordenados, mes=mes, valor=valor, img1=imagen_prediccion, img2= imagen_datos, prediccion=prediccion, resultado_municipio=resultadoMunicipio)
+
+@app.route('/prediccion/<nombre>')
+def prediccion(nombre):
+    data = {
+        'nombre': nombre
+    }
+    return render_template('prediccion.html', data=data)
+
+
 
 #Si está en la página principal, llama a la función
 if __name__=='__main__':
