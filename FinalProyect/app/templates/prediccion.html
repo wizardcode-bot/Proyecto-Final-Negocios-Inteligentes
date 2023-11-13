@@ -1,24 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Predidcion</title>
+    <title>Web App</title>
 </head>
 <body>
-    <!-- <h1>{{ data.nombre }}</h1> -->
-    <form method="POST" action="{{ url_for('prediccion') }}">
+    <form action="/" method="POST">
         <label for="departamento">Departamento:</label>
-        <input type="text" name="departamento" value="{{ data.departamento }}">
-    
+        <input type="text" name="departamento" required><br>
+
         <label for="municipio">Municipio:</label>
-        <input type="text" name="municipio" value="{{ data.municipio }}">
-    
+        <input type="text" name="municipio" required><br>
+
         <label for="nombre">Nombre:</label>
-        <input type="text" name="nombre" value="{{ data.nombre }}">
-    
-        <button type="submit">Ir a Predicción</button>
+        <input type="text" name="nombre" required><br>
+
+        <input type="submit" value="Filtrar">
     </form>
-    
+
+    <!-- Mostrar resultados y gráficos aquí -->
 </body>
 </html>

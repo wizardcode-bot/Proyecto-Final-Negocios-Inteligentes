@@ -1,5 +1,6 @@
 table {
     border-collapse: collapse; /*Fusiona los bordes de las celdas para que parezca una tabla continua.*/
+    padding: auto;
 }
 
 th, td {

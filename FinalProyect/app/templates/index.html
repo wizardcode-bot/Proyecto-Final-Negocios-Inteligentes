@@ -8,20 +8,6 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='Css/estilos.css') }}">
 </head>
 <body>
-    <!-- <h1>{{ data }}</h1> -->
-
-    <form method="POST" action="{{ url_for('index') }}">
-        <label for="departamento">Departamento:</label>
-        <input type="text" name="departamento" required>
-    
-        <label for="municipio">Municipio:</label>
-        <input type="text" name="municipio" required>
-    
-        <label for="nombre">Nombre:</label>
-        <input type="text" name="nombre" required>
-    
-        <button type="submit">Enviar</button>
-    </form>
 
     <!-- Mostrar los valores seleccionados -->
     <div>
@@ -49,7 +35,6 @@
                 <th>NOV</th>
                 <th>DIC</th>
                 <th>ANUAL</th>
-                <!-- Agrega más columnas según las necesidades -->
             </tr>
         </thead>
         <tbody>
@@ -71,7 +56,6 @@
                     <td>{{ item['NOV'] }}</td>
                     <td>{{ item['DIC'] }}</td>
                     <td>{{ item['ANUAL'] }}</td>
-                    <!-- Ajusta según las columnas en tu DataFrame -->
                 </tr>
             {% endfor %}
         </tbody>
@@ -79,11 +63,15 @@
 
     <div class="graficos">
         <img src="data:image/png;base64,{{ img1 }}"
-            alt="Mi Gráfico"><!--img1 es el nombre con que se le dio en el archivo de python-->
+            alt="Modelo de Regresión Polinómica y Predicción"><!--img1 es el nombre con que se le dio en el archivo de python-->
          <img src="data:image/png;base64,{{ img2 }}" alt="Mi Gráfico">
     </div>  
 
     <h2>El valor de la predicción para el Mes seleccionado es de {{ prediccion }}</h2>
+    <h2>La moda es de {{ moda }}</h2>
+    <h2>La media es de {{ media }}</h2>
+    <h2>La mediana es de {{ mediana }}</h2>
+    <h2>La desviación estandar es de {{ desvEst }}</h2>
 
     <!-- Muestra los dato en una lista desordenada -->
     <!-- <ul>
@@ -92,6 +80,7 @@
         {% endfor %}
     </ul> -->
 
+    <!-- tabla con los datos ordenados de menor a mayor -->
     <table><!-- Tabla -->
         <thead><!-- Encabezado de la tabla -->
             <tr><!-- Filas -->
@@ -108,12 +97,8 @@
             {% endfor %}
         </tbody>
     </table>
-    <!-- grafico -->
+    
     <!-- llama al archivo javascrip -->
-
-    
-    
-
     <script src="{{ url_for('static', filename='Js/layout.js') }}"></script>
 </body>
 </html>

@@ -14,6 +14,17 @@ app = Flask(__name__)
 #Se crea una vista llamada index que se expresa en forma de una función
 def index():
 
+    if request.method == 'POST':
+     # Obtener datos del formulario
+     departamento_seleccionado = request.form['departamento']
+     municipio_seleccionado = request.form['municipio']
+     nombre_seleccionado = request.form['nombre']
+    else:
+        # Valores predeterminados o manejar el caso en que no se haya enviado el formulario aún
+        departamento_seleccionado = ""
+        municipio_seleccionado = ""
+        nombre_seleccionado = ""
+
     # Ruta del archivo Excel
     ruta = 'C:\\Users\\HOME\\Downloads\\finalPoyectNegocios\\archivos\\DatosCompletos.xlsx'
 
@@ -167,7 +178,7 @@ def index():
     imagen_datos = base64.b64encode(img2.read()).decode() 
 
     
-    return render_template('index.html', data=resultadoNombre, datos=datos_ordenados, mes=mes, valor=valor, img1=imagen_prediccion, img2= imagen_datos, prediccion=prediccion, resultado_nombre=resultado_nombre_lista, departamento=departamento_seleccionado, municipio=municipio_seleccionado, nombre=nombre_seleccionado)
+    return render_template('index.html', data=resultadoNombre, datos=datos_ordenados, mes=mes, valor=valor, img1=imagen_prediccion, img2= imagen_datos, prediccion=prediccion, resultado_nombre=resultado_nombre_lista, departamento=departamento_seleccionado, municipio=municipio_seleccionado, nombre=nombre_seleccionado, moda=moda, media=media, mediana=mediana, desvEst=desvEst)
 
 #Si está en la página principal, llama a la función
 if __name__=='__main__':
