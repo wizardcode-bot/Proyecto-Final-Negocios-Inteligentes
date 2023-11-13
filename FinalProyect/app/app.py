@@ -10,9 +10,10 @@ import base64
 app = Flask(__name__)
 
 #Se indica que es la ruta raíz
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 #Se crea una vista llamada index que se expresa en forma de una función
 def index():
+
     # Ruta del archivo Excel
     ruta = 'C:\\Users\\HOME\\Downloads\\finalPoyectNegocios\\archivos\\DatosCompletos.xlsx'
 
@@ -28,6 +29,11 @@ def index():
     #Imprimir los 5 primeros o los 5 últimos datos del archivo
     #print(data.head(5))
     #print(data.tail(5))
+
+    if request.method == 'POST':
+            departamento_seleccionado = request.form['departamento']
+            municipio_seleccionado = request.form['municipio']
+            nombre_seleccionado = request.form['nombre']
 
     # Muestra los departamentos sin repetirlos en la columna "DEPARTAMENTO"
     departamentos_unicos = data['DEPARTAMENTO'].unique()
@@ -70,6 +76,10 @@ def index():
 
     resultadoNombre = data.loc[data['NOMBRE'] == nombre_seleccionado]
     print(resultadoNombre)
+
+    # Convertir resultadoMunicipio a una lista de diccionarios para pasar a la plantilla
+    resultado_nombre_lista = resultadoNombre.to_dict(orient='records')
+    print(resultado_nombre_lista)
 
 
     #convierte el resultado en una lista
@@ -179,15 +189,20 @@ def index():
     img2.seek(0)
     imagen_datos = base64.b64encode(img2.read()).decode() 
 
-    # Convertir resultadoMunicipio a una lista de diccionarios para pasar a la plantilla
-    resultado_municipio_lista = resultadoMunicipio.to_dict(orient='records')
+    
 
     
-    return render_template('index.html', data=resultadoNombre, datos=datos_ordenados, mes=mes, valor=valor, img1=imagen_prediccion, img2= imagen_datos, prediccion=prediccion, resultado_municipio=resultadoMunicipio)
+    return render_template('index.html', data=resultadoNombre, datos=datos_ordenados, mes=mes, valor=valor, img1=imagen_prediccion, img2= imagen_datos, prediccion=prediccion, resultado_nombre=resultado_nombre_lista, departamento=departamento_seleccionado, municipio=municipio_seleccionado, nombre=nombre_seleccionado)
 
-@app.route('/prediccion/<nombre>')
-def prediccion(nombre):
+@app.route('/prediccion', methods=['POST'])
+def prediccion():
+    departamento = request.form.get('departamento', 'Valor predeterminado')
+    municipio = request.form.get('municipio', 'Valor predeterminado')
+    nombre = request.form.get('nombre', 'Valor predeterminado')
+
     data = {
+        'departamento': departamento,
+        'municipio': municipio,
         'nombre': nombre
     }
     return render_template('prediccion.html', data=data)

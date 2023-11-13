@@ -6,6 +6,18 @@
     <title>Predidcion</title>
 </head>
 <body>
-    <h1>{{ data.nombre }}</h1>
+    <!-- <h1>{{ data.nombre }}</h1> -->
+    <form method="POST" action="{{ url_for('prediccion') }}">
+        <label for="departamento">Departamento:</label>
+        <input type="text" name="departamento" value="{{ departamento_seleccionado }}" readonly>
+    
+        <label for="municipio">Municipio:</label>
+        <input type="text" name="municipio" value="{{ municipio_seleccionado }}" readonly>
+    
+        <label for="nombre">Nombre:</label>
+        <input type="text" name="nombre" value="{{ nombre_seleccionado }}" readonly>
+    
+        <button type="submit">Ir a Predicción</button>
+    </form>
 </body>
 </html>

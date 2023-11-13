@@ -10,47 +10,68 @@
 <body>
     <!-- <h1>{{ data }}</h1> -->
 
+    <form method="POST" action="{{ url_for('prediccion') }}">
+        <label for="departamento">Departamento:</label>
+        <input type="text" id="departamento" name="departamento">
+    
+        <label for="municipio">Municipio:</label>
+        <input type="text" id="municipio" name="municipio">
+    
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre">
+    
+        <input type="hidden" name="nombre" value="{{ nombre_seleccionado }}">
+        <button type="submit">Ir a Predicción</button>
+    </form>
+
+    <!-- Mostrar los valores seleccionados -->
+    <div>
+        <p>Departamento seleccionado: {{ departamento }}</p>
+        <p>Municipio seleccionado: {{ municipio }}</p>
+        <p>Nombre seleccionado: {{ nombre }}</p>
+    </div>
+
     <table>
         <thead>
             <tr>
-                <th>Nombre</th>
-                <th>Municipio</th>
-                <th>Departamento</th>
-                <th>Enero</th>
-                <th>Febrero</th>
-                <th>Marzo</th>
-                <th>Abril</th>
-                <th>Mayo</th>
-                <th>Junio</th>
-                <th>Julio</th>
-                <th>Agosto</th>
-                <th>Septiembre</th>
-                <th>Octubre</th>
-                <th>Noviembre</th>
-                <th>Diciembre</th>
-                <th>Anual</th>
+                <th>NOMBRE</th>
+                <th>MUNICIPIO</th>
+                <th>DEPARTAMENTO</th>
+                <th>ENE</th>
+                <th>FEB</th>
+                <th>MAR</th>
+                <th>ABR</th>
+                <th>MAY</th>
+                <th>JUN</th>
+                <th>JUL</th>
+                <th>AGO</th>
+                <th>SEP</th>
+                <th>OCT</th>
+                <th>NOV</th>
+                <th>DIC</th>
+                <th>ANUAL</th>
                 <!-- Agrega más columnas según las necesidades -->
             </tr>
         </thead>
         <tbody>
-            {% for item in resultado_municipio %}
+            {% for item in resultado_nombre %}
                 <tr>
-                    <td>{{ item['Nombre'] }}</td>
-                    <td>{{ item['Municipio'] }}</td>
-                    <td>{{ item['Departamento'] }}</td>
-                    <td>{{ item['Enero'] }}</td>
-                    <td>{{ item['Febrero'] }}</td>
-                    <td>{{ item['Marzo'] }}</td>
-                    <td>{{ item['Abril'] }}</td>
-                    <td>{{ item['Mayo'] }}</td>
-                    <td>{{ item['Junio'] }}</td>
-                    <td>{{ item['Julio'] }}</td>
-                    <td>{{ item['Agosto'] }}</td>
-                    <td>{{ item['Septiembre'] }}</td>
-                    <td>{{ item['Octubre'] }}</td>
-                    <td>{{ item['Noviembre'] }}</td>
-                    <td>{{ item['Diciembre'] }}</td>
-                    <td>{{ item['Anual'] }}</td>
+                    <td>{{ item['NOMBRE'] }}</td>
+                    <td>{{ item['MUNICIPIO'] }}</td>
+                    <td>{{ item['DEPARTAMENTO'] }}</td>
+                    <td>{{ item['ENE'] }}</td>
+                    <td>{{ item['FEB'] }}</td>
+                    <td>{{ item['MAR'] }}</td>
+                    <td>{{ item['ABR'] }}</td>
+                    <td>{{ item['MAY'] }}</td>
+                    <td>{{ item['JUN'] }}</td>
+                    <td>{{ item['JUL'] }}</td>
+                    <td>{{ item['AGO'] }}</td>
+                    <td>{{ item['SEP'] }}</td>
+                    <td>{{ item['OCT'] }}</td>
+                    <td>{{ item['NOV'] }}</td>
+                    <td>{{ item['DIC'] }}</td>
+                    <td>{{ item['ANUAL'] }}</td>
                     <!-- Ajusta según las columnas en tu DataFrame -->
                 </tr>
             {% endfor %}
