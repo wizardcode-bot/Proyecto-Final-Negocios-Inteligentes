@@ -9,15 +9,16 @@
     <!-- <h1>{{ data.nombre }}</h1> -->
     <form method="POST" action="{{ url_for('prediccion') }}">
         <label for="departamento">Departamento:</label>
-        <input type="text" name="departamento" value="{{ departamento_seleccionado }}" readonly>
+        <input type="text" name="departamento" value="{{ data.departamento }}">
     
         <label for="municipio">Municipio:</label>
-        <input type="text" name="municipio" value="{{ municipio_seleccionado }}" readonly>
+        <input type="text" name="municipio" value="{{ data.municipio }}">
     
         <label for="nombre">Nombre:</label>
-        <input type="text" name="nombre" value="{{ nombre_seleccionado }}" readonly>
+        <input type="text" name="nombre" value="{{ data.nombre }}">
     
         <button type="submit">Ir a Predicción</button>
     </form>
+    
 </body>
 </html>

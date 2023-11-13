@@ -26,15 +26,6 @@ def index():
     # Guardar los datos en un archivo CSV
     data.to_csv(csv_file, index=False)
 
-    #Imprimir los 5 primeros o los 5 últimos datos del archivo
-    #print(data.head(5))
-    #print(data.tail(5))
-
-    if request.method == 'POST':
-            departamento_seleccionado = request.form['departamento']
-            municipio_seleccionado = request.form['municipio']
-            nombre_seleccionado = request.form['nombre']
-
     # Muestra los departamentos sin repetirlos en la columna "DEPARTAMENTO"
     departamentos_unicos = data['DEPARTAMENTO'].unique()
     print("\nDepartamentos en la columna 'DEPARTAMENTO':")
@@ -79,8 +70,6 @@ def index():
 
     # Convertir resultadoMunicipio a una lista de diccionarios para pasar a la plantilla
     resultado_nombre_lista = resultadoNombre.to_dict(orient='records')
-    print(resultado_nombre_lista)
-
 
     #convierte el resultado en una lista
     resultado_lista = resultadoNombre.values.tolist()
@@ -128,18 +117,6 @@ def index():
     print("La media de el Brillo Solar es:", round(media, 4))
     print("La mediana de el Brillo Solar es:", round(mediana, 4))
     print("La desviacion estandar de el Brillo Solar es:", round(desvEst, 4))
-
-
-    # Calcular el resultado
-    # k = math.log( arreglo_ordenado[11]/arreglo_ordenado[0]) / 11
-    # print("\nK tiene un valor de: ", k)
-    # numero3 = float(input("\nIngresa la cantidad de años que quieres estimar: ")) #Entre 2000 y 2020
-    # if (numero3 > 2026):
-    #     print("Número erróneo")
-    # #numero4= numero3 - 2000
-    # Estimacion = arreglo_ordenado[0] * math.exp(k * numero3)
-    # print("\nSu prediccion es de:", round(Estimacion, 4))
-
     
     #MODELO DE REGRESION POLINOMICA 
     #(Se ajustan las variables a un polinomio de grado 5)
@@ -190,24 +167,7 @@ def index():
     imagen_datos = base64.b64encode(img2.read()).decode() 
 
     
-
-    
     return render_template('index.html', data=resultadoNombre, datos=datos_ordenados, mes=mes, valor=valor, img1=imagen_prediccion, img2= imagen_datos, prediccion=prediccion, resultado_nombre=resultado_nombre_lista, departamento=departamento_seleccionado, municipio=municipio_seleccionado, nombre=nombre_seleccionado)
-
-@app.route('/prediccion', methods=['POST'])
-def prediccion():
-    departamento = request.form.get('departamento', 'Valor predeterminado')
-    municipio = request.form.get('municipio', 'Valor predeterminado')
-    nombre = request.form.get('nombre', 'Valor predeterminado')
-
-    data = {
-        'departamento': departamento,
-        'municipio': municipio,
-        'nombre': nombre
-    }
-    return render_template('prediccion.html', data=data)
-
-
 
 #Si está en la página principal, llama a la función
 if __name__=='__main__':

@@ -10,18 +10,17 @@
 <body>
     <!-- <h1>{{ data }}</h1> -->
 
-    <form method="POST" action="{{ url_for('prediccion') }}">
+    <form method="POST" action="{{ url_for('index') }}">
         <label for="departamento">Departamento:</label>
-        <input type="text" id="departamento" name="departamento">
+        <input type="text" name="departamento" required>
     
         <label for="municipio">Municipio:</label>
-        <input type="text" id="municipio" name="municipio">
+        <input type="text" name="municipio" required>
     
         <label for="nombre">Nombre:</label>
-        <input type="text" id="nombre" name="nombre">
+        <input type="text" name="nombre" required>
     
-        <input type="hidden" name="nombre" value="{{ nombre_seleccionado }}">
-        <button type="submit">Ir a Predicción</button>
+        <button type="submit">Enviar</button>
     </form>
 
     <!-- Mostrar los valores seleccionados -->
