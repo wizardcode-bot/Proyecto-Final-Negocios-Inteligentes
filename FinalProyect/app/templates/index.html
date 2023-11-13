@@ -67,21 +67,8 @@
          <img src="data:image/png;base64,{{ img2 }}" alt="Mi Gráfico">
     </div>  
 
-    <h2>El valor de la predicción para el Mes seleccionado es de {{ prediccion }}</h2>
-    <h2>La moda es de {{ moda }}</h2>
-    <h2>La media es de {{ media }}</h2>
-    <h2>La mediana es de {{ mediana }}</h2>
-    <h2>La desviación estandar es de {{ desvEst }}</h2>
-
-    <!-- Muestra los dato en una lista desordenada -->
-    <!-- <ul>
-        {% for c in data.cursos %}
-        <li>{{ c }}</li>
-        {% endfor %}
-    </ul> -->
-
     <!-- tabla con los datos ordenados de menor a mayor -->
-    <table><!-- Tabla -->
+    <table class="styled-table"><!-- Tabla -->
         <thead><!-- Encabezado de la tabla -->
             <tr><!-- Filas -->
                 <th>Meses</th>
@@ -97,6 +84,51 @@
             {% endfor %}
         </tbody>
     </table>
+    
+
+<div class="resultados">
+    <table class="styled-table">
+        <thead>
+            <tr>
+                <th>Variable</th>
+                <th>Valor</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Predicción</td>
+                <td>{{ prediccion }}</td>
+            </tr>
+            <tr>
+                <td>Moda</td>
+                <td>{{ moda }}</td>
+            </tr>
+            <tr>
+                <td>Media</td>
+                <td>{{ media }}</td>
+            </tr>
+            <tr>
+                <td>Mediana</td>
+                <td>{{ mediana }}</td>
+            </tr>
+            <tr>
+                <td>Desviación Estándar</td>
+                <td>{{ desvEst }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- ... Tu código HTML posterior ... -->
+
+
+    <!-- Muestra los dato en una lista desordenada -->
+    <!-- <ul>
+        {% for c in data.cursos %}
+        <li>{{ c }}</li>
+        {% endfor %}
+    </ul> -->
+
     
     <!-- llama al archivo javascrip -->
     <script src="{{ url_for('static', filename='Js/layout.js') }}"></script>
