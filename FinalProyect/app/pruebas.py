@@ -148,9 +148,9 @@ plt.figure(figsize=(10, 5))
 plt.plot(columnas_meses_numero, arreglo_ordenado, 'o-', color='red')
 plt.xlabel('Meses')
 plt.ylabel('Brillo Solar')
-plt.title('Regresión Polinómica y Predicción con "k" ajustado')
+plt.title('Regresión Polinómica y Predicción con "k"')
 plt.grid(True)
 plt.plot(rango_polinomial, regresion_polinomial, '--', color='green')  # modelo de regresión
-plt.plot(rango_prediccion, arreglo_ordenado[0] * np.exp(k * np.array(rango_prediccion)), '--', color='blue')  # datos predichos con "k" ajustado
-plt.legend(['Datos', 'Regresión Polinómica', 'Predicción con "k" ajustado'])
+plt.plot(rango_prediccion, prediccion_k, '--', color='blue')  # datos predichos con "k" ajustado
+plt.legend(['Datos', 'Regresión Polinómica', 'Predicción con "k"'])
 plt.show()

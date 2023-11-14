@@ -9,18 +9,22 @@ th, td {
     padding: 4px;
 }
 
+/* primera tabla */
+.selectedName{
+    position:relative;
+}
+
 .graficos{
     width: fit-content;
 }
 
-/* Agrega este código a tu archivo estilos.css */
 .styled-table {
     width: 40%;
     border-collapse: collapse;
     margin: 25px 0;
     font-size: 18px;
-    text-align: left;
-    position: relative;
+    text-align: center;
+    margin-right: 20px;
 }
 
 .styled-table th, .styled-table td {
@@ -35,3 +39,66 @@ th, td {
 .styled-table tbody tr:hover {
     background-color: #f5f5f5;
 }
+
+.meses-valores-table {
+    width: 50%;
+    margin-top: 25px;
+    margin-left: 20px;
+}
+
+.meses-valores-table th, .meses-valores-table td {
+    padding: 10px;
+    text-align: center;
+}
+
+.meses-valores-table th {
+    background-color: #f2f2f2;
+    color: black;
+}
+
+.meses-valores-table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.meses-valores-table tbody tr:hover {
+    background-color: #ddd;
+}
+
+/* Estilos para colocar las tablas una al lado de la otra */
+.container {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Ajusta los estilos según la resolución de la pantalla */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+.linea-horizontal {
+    border: 2px solid #000000; /* color y grosor de la línea */
+    margin: 20px 0; /* margen superior e inferior para separar del contenido */ 
+}
+
+/* Estilos para la tabla estimacion_con_k */
+.styled-table-k {
+    width: 30%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.styled-table-k th, .styled-table-k td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+/* Estilos para el contenedor de la predicción con k */
+.prediccion-con-k-container {
+    margin-top: 20px;
+}
+
+
