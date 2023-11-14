@@ -10,7 +10,7 @@
 
 body {
     font-family: Georgia, 'Times New Roman', Times, serif;
-    background-color: #e27a7a;
+	background: linear-gradient(to bottom right, #AED6F1, #F9EBB2);
     margin: 0;
     padding: 0;
     line-height: 2.0; /* Ajusta el espaciado entre líneas */
@@ -21,7 +21,7 @@ body {
     color: white;
     text-align: center;
     padding: 20px;
-    margin-top: 120px;
+    padding-top: 120px;
 }
 
 .titulo h1 {
