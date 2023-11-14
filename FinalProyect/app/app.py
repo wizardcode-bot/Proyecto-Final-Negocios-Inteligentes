@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect, url_for
 import pandas as pd
 import numpy as np
 from statistics import mode
@@ -10,9 +10,21 @@ import base64
 app = Flask(__name__)
 
 #Se indica que es la ruta raíz
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 #Se crea una vista llamada index que se expresa en forma de una función
 def index():
+
+    if request.method == 'POST':
+     # Obtener datos del formulario
+     departamento_seleccionado = request.form['departamento']
+     municipio_seleccionado = request.form['municipio']
+     nombre_seleccionado = request.form['nombre']
+    else:
+        # Valores predeterminados o manejar el caso en que no se haya enviado el formulario aún
+        departamento_seleccionado = ""
+        municipio_seleccionado = ""
+        nombre_seleccionado = ""
+
     # Ruta del archivo Excel
     ruta = 'C:\\Users\\HOME\\Downloads\\finalPoyectNegocios\\archivos\\DatosCompletos.xlsx'
 
@@ -24,10 +36,6 @@ def index():
 
     # Guardar los datos en un archivo CSV
     data.to_csv(csv_file, index=False)
-
-    #Imprimir los 5 primeros o los 5 últimos datos del archivo
-    #print(data.head(5))
-    #print(data.tail(5))
 
     # Muestra los departamentos sin repetirlos en la columna "DEPARTAMENTO"
     departamentos_unicos = data['DEPARTAMENTO'].unique()
@@ -71,6 +79,8 @@ def index():
     resultadoNombre = data.loc[data['NOMBRE'] == nombre_seleccionado]
     print(resultadoNombre)
 
+    # Convertir resultadoMunicipio a una lista de diccionarios para pasar a la plantilla
+    resultado_nombre_lista = resultadoNombre.to_dict(orient='records')
 
     #convierte el resultado en una lista
     resultado_lista = resultadoNombre.values.tolist()
@@ -118,25 +128,13 @@ def index():
     print("La media de el Brillo Solar es:", round(media, 4))
     print("La mediana de el Brillo Solar es:", round(mediana, 4))
     print("La desviacion estandar de el Brillo Solar es:", round(desvEst, 4))
-
-
-    # Calcular el resultado
-    k = math.log( arreglo_ordenado[11]/arreglo_ordenado[0]) / 11
-    print("\nK tiene un valor de: ", k)
-    numero3 = float(input("\nIngresa la cantidad de años que quieres estimar: ")) #Entre 2000 y 2020
-    if (numero3 > 2026):
-        print("Número erróneo")
-    #numero4= numero3 - 2000
-    Estimacion = arreglo_ordenado[0] * math.exp(k * numero3)
-    print("\nSu prediccion es de:", round(Estimacion, 4))
-
     
     #MODELO DE REGRESION POLINOMICA 
     #(Se ajustan las variables a un polinomio de grado 5)
-    coeficientes = np.polyfit(columnas_meses_numero, arreglo_ordenado, 5)
+    coeficientes = np.polyfit(columnas_meses_numero, arreglo_ordenado, 3)
     #Se crea una función polinómica a partir de los coeficientes
     funcPolinomial = np.poly1d(coeficientes)
-    print(coeficientes)
+    #print(coeficientes)
     print(funcPolinomial)
 
     rangoPrediccion = int(input("A que mes quiere predecir: "))
@@ -146,10 +144,10 @@ def index():
 
 
     # formato de presentación 2f, 2 decimales despues del punto
-    print(f"La cantidad de Brillo Solar) para el mes {rangoPrediccion} sera de: {prediccion:.2f}")
+    print(f"La cantidad de Brillo Solar para el mes {rangoPrediccion} sera de: {prediccion:.2f}")
     # Modelo Prediccion
     rangoPrediccion = range(12,  rangoPrediccion + 1)
-    precipitapredi = funcPolinomial(rangoPrediccion)
+    prediccionGrafica = funcPolinomial(rangoPrediccion)
 
     buffer = BytesIO()#Almacena temporalmente las imagenes
     plt.figure(figsize=(10, 5))  # dimensiones
@@ -157,10 +155,10 @@ def index():
     plt.plot(columnas_meses_numero, arreglo_ordenado , 'o-', color='red')
     plt.xlabel('Meses')
     plt.ylabel('Brillo Solar')
-    plt.title('Regresion y Prediccion')
+    plt.title('Modelo de Regresión Polinómica y Predicción')
     plt.grid(True)
-    plt.plot(columnas_meses_numero, funcPolinomial(columnas_meses_numero), '--',color='green')  # modelo de regresión
-    plt.plot(rangoPrediccion, precipitapredi, '--',color='blue')  # datos predichos
+    plt.plot(columnas_meses_numero, funcPolinomial(columnas_meses_numero), '--',color='green')  # Grafica modelo de regresión
+    plt.plot(rangoPrediccion, prediccionGrafica, '--',color='blue')  # Grafica datos predecidos
     plt.legend(['Datos', 'Regresión', 'Predicción'])
     img1 = BytesIO()
     plt.savefig(img1, format='png')
@@ -172,7 +170,7 @@ def index():
     plt.plot(columnas_meses_numero, arreglo_ordenado , 'o-', color='red')
     plt.xlabel('Meses')
     plt.ylabel('Brillo Solar')
-    plt.title('Regresion y Prediccion')
+    plt.title('Datos de Brillo Solar registrados')
     plt.grid(True)
     img2 = BytesIO()
     plt.savefig(img2, format='png')
@@ -180,8 +178,7 @@ def index():
     imagen_datos = base64.b64encode(img2.read()).decode() 
 
     
-    return render_template('index.html', data=resultadoNombre, datos=datos_ordenados, mes=mes, valor=valor, img1=imagen_prediccion, img2= imagen_datos)
-    #mensaje = "<h1>¡Hola mundo desde Flask!</h1>"
+    return render_template('index.html', data=resultadoNombre, datos=datos_ordenados, mes=mes, valor=valor, img1=imagen_prediccion, img2= imagen_datos, prediccion=prediccion, resultado_nombre=resultado_nombre_lista, departamento=departamento_seleccionado, municipio=municipio_seleccionado, nombre=nombre_seleccionado, moda=moda, media=media, mediana=mediana, desvEst=desvEst)
 
 #Si está en la página principal, llama a la función
 if __name__=='__main__':

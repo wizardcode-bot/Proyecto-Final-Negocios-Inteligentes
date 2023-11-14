@@ -8,22 +8,67 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='Css/estilos.css') }}">
 </head>
 <body>
-    <!-- <h1>{{ data }}</h1> -->
+
+    <!-- Mostrar los valores seleccionados -->
+    <div>
+        <p>Departamento seleccionado: {{ departamento }}</p>
+        <p>Municipio seleccionado: {{ municipio }}</p>
+        <p>Nombre seleccionado: {{ nombre }}</p>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>NOMBRE</th>
+                <th>MUNICIPIO</th>
+                <th>DEPARTAMENTO</th>
+                <th>ENE</th>
+                <th>FEB</th>
+                <th>MAR</th>
+                <th>ABR</th>
+                <th>MAY</th>
+                <th>JUN</th>
+                <th>JUL</th>
+                <th>AGO</th>
+                <th>SEP</th>
+                <th>OCT</th>
+                <th>NOV</th>
+                <th>DIC</th>
+                <th>ANUAL</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in resultado_nombre %}
+                <tr>
+                    <td>{{ item['NOMBRE'] }}</td>
+                    <td>{{ item['MUNICIPIO'] }}</td>
+                    <td>{{ item['DEPARTAMENTO'] }}</td>
+                    <td>{{ item['ENE'] }}</td>
+                    <td>{{ item['FEB'] }}</td>
+                    <td>{{ item['MAR'] }}</td>
+                    <td>{{ item['ABR'] }}</td>
+                    <td>{{ item['MAY'] }}</td>
+                    <td>{{ item['JUN'] }}</td>
+                    <td>{{ item['JUL'] }}</td>
+                    <td>{{ item['AGO'] }}</td>
+                    <td>{{ item['SEP'] }}</td>
+                    <td>{{ item['OCT'] }}</td>
+                    <td>{{ item['NOV'] }}</td>
+                    <td>{{ item['DIC'] }}</td>
+                    <td>{{ item['ANUAL'] }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 
     <div class="graficos">
         <img src="data:image/png;base64,{{ img1 }}"
-            alt="Mi Gráfico"><!--img1 es el nombre con que se le dio en el archivo de python-->
+            alt="Modelo de Regresión Polinómica y Predicción"><!--img1 es el nombre con que se le dio en el archivo de python-->
          <img src="data:image/png;base64,{{ img2 }}" alt="Mi Gráfico">
     </div>  
 
-    <!-- Muestra los dato en una lista desordenada -->
-    <!-- <ul>
-        {% for c in data.cursos %}
-        <li>{{ c }}</li>
-        {% endfor %}
-    </ul> -->
-
-    <table><!-- Tabla -->
+    <!-- tabla con los datos ordenados de menor a mayor -->
+    <table class="styled-table"><!-- Tabla -->
         <thead><!-- Encabezado de la tabla -->
             <tr><!-- Filas -->
                 <th>Meses</th>
@@ -39,7 +84,52 @@
             {% endfor %}
         </tbody>
     </table>
-    <!-- grafico -->
+    
+
+<div class="resultados">
+    <table class="styled-table">
+        <thead>
+            <tr>
+                <th>Variable</th>
+                <th>Valor</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Predicción</td>
+                <td>{{ prediccion }}</td>
+            </tr>
+            <tr>
+                <td>Moda</td>
+                <td>{{ moda }}</td>
+            </tr>
+            <tr>
+                <td>Media</td>
+                <td>{{ media }}</td>
+            </tr>
+            <tr>
+                <td>Mediana</td>
+                <td>{{ mediana }}</td>
+            </tr>
+            <tr>
+                <td>Desviación Estándar</td>
+                <td>{{ desvEst }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- ... Tu código HTML posterior ... -->
+
+
+    <!-- Muestra los dato en una lista desordenada -->
+    <!-- <ul>
+        {% for c in data.cursos %}
+        <li>{{ c }}</li>
+        {% endfor %}
+    </ul> -->
+
+    
     <!-- llama al archivo javascrip -->
     <script src="{{ url_for('static', filename='Js/layout.js') }}"></script>
 </body>
