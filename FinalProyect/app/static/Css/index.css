@@ -1,0 +1,253 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@900&display=swap');
+/*Al principio de cada css se le da esta especificacion para que no tenga nada por defecto*/
+*,
+*::before,
+*::after
+{
+	margin:0;
+	padding:0;
+    box-sizing: inherit;
+}
+
+ body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin-top: 100px; 
+    background: linear-gradient(to bottom right, #AED6F1, #F9EBB2);
+ }
+
+ .container .img_container{
+    width: 550px;
+    height: 450px;
+    margin-bottom: 20px;
+ }
+ .container .thumbnail_container .thumbnail {
+    width: 130px;
+    height: 100px;
+    border-radius: 10px; /* Agregar bordes redondeados */
+    cursor: pointer;
+    object-fit: cover;
+    opacity: 0.7;
+    transition: .1s;
+    border: 3px solid #000; /* Agregar un borde de 2px sólido en color negro */
+}
+
+.container .thumbnail_container .thumbnail:hover {
+    opacity: 1;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Añadir una pequeña sombra al hacer hover */
+}
+
+/* Estilo de borde para la imagen principal */
+.container .img_container .main_img {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px; /* Agregar bordes redondeados */
+    box-shadow: 0 5px 5px rgba(1, 23, 46, 0.6);
+    object-fit: cover;
+    border: 5px solid rgb(68, 0, 0); /* Agregar un borde de 2px sólido en color negro */
+}
+.active{
+    opacity: 1 !important;
+    box-shadow: 0 5px 5px rgba(1, 23, 46, 0.6);
+}
+
+.image-overlay {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+
+.image-overlay-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: -1;
+}
+
+.image-overlay-content {
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 90%;
+    z-index: 1;
+    border-radius: 10px;
+}
+
+#enlarged-image {
+    max-width: 100%;
+    max-height: 90vh;
+    border: 5px solid #000;
+    border-radius: 10px;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+}
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #fff; /* Cambiar el color de la "x" a blanco */
+    background-color: #000; /* Cambiar el fondo de la "x" a negro */
+    border-radius: 50%; /* Hacer que la "x" tenga un fondo circular */
+    width: 30px; /* Ajustar el ancho */
+    height: 30px; /* Ajustar la altura */
+    line-height: 30px; /* Alinear el texto verticalmente en el centro del círculo */
+    text-align: center; /* Alinear el texto horizontalmente en el centro del círculo */
+    font-weight: bold; /* Hacer que la "x" sea más audaz */
+    font-family: Arial, sans-serif; /* Cambiar la fuente de la "x" */
+    text-decoration: none; /* Eliminar subrayado (si es un enlace) */
+    border-radius: 10px; /* Ajustar la esquina para que sea más esquinera */
+}
+
+header{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(1, 1, 1, 0.192);
+    padding: 0px 10%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    letter-spacing: 1px; 
+    font-family: 'Poppins', sans-serif;
+ }
+
+/*Titulo*/
+.logo{
+	font-size: 25px;
+	text-transform: uppercase;
+	color: white;
+	font-weight: 700px;
+}
+
+
+.header .navigation ul li {
+    float: left;
+    display: table-cell;
+}
+
+
+nav > ul > li:hover > ul {
+	display:flex;
+	height:100%;
+    width: auto;
+    left: 722px;
+    letter-spacing: 1px; 
+}
+/*formula y medicion*/
+nav > ul > li > ul {
+	display:block;
+	position:absolute;
+	background-color: rgba(1, 1, 1, 0.192);
+	left:0;
+	right:0;
+	overflow:hidden;
+	height:0%;
+	-webkit-transition: all .3s ease;
+	-moz-transition: all .3s ease;
+	-ms-transition: all .3s ease;
+	-o-transition: all .3s ease;
+	transition: all .3s ease;
+}
+/*lo que contienen la barra de navegacion*/
+nav > ul li a {
+	color:#fff;
+	display:block;
+	line-height:20px;
+	padding:20px;
+	position: relative;
+	text-align:center;
+	text-decoration:none;
+	-webkit-transition: all .3s ease;
+	-moz-transition: all .3s ease;
+	-ms-transition: all .3s ease;
+	-o-transition: all .3s ease;
+	transition: all .3s ease;
+}
+
+nav > ul > li > ul > li a:hover {
+	background:#5da5a2;
+}
+nav > ul > li > a span {
+	display:block;
+	height:100%;
+	width:100%;
+	left:0;
+	position:absolute;
+	top:-55px;
+	-webkit-transition: all .3s ease;
+	-moz-transition: all .3s ease;
+	-ms-transition: all .3s ease;
+	-o-transition: all .3s ease;
+	transition: all .3s ease;
+}
+/*Donde se esconde la barra del icon*/
+nav > ul > li > a span .icon {
+	display:block;
+	line-height:60px;
+}
+
+nav > ul > li > a:hover > span {
+	top:0;
+}
+
+/*Color al icon cuando baje*/
+nav ul li a .primero {
+	background:#0e5061;
+}
+
+nav ul li a .segundo {
+	background:#5da5a2;
+}
+
+nav ul li a .tercero {
+	background:#f25724;
+}
+
+nav ul li a .cuarto {
+	background:#174459;
+}
+
+/*Para el responsive se le da caracteristicas para un movil*/
+@media (max-width: 950px) {
+	.header label {
+	  display: initial;
+	}
+  
+	.header {
+	  padding: 20px 10%;
+	}
+  
+	.header .navigation {
+	  position: absolute;
+	  top: 100%;
+	  left: 0;
+	  right: 0;
+
+	  display: none;
+	}
+  }

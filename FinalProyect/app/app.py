@@ -223,7 +223,14 @@ def index():
     imagen_prediccion_k = base64.b64encode(img3.read()).decode() 
 
     
-    return render_template('index.html', data=resultadoNombre, datos=datos_ordenados, mes=mes, valor=valor, img1=imagen_prediccion, img2= imagen_datos, prediccion=prediccion, resultado_nombre=resultado_nombre_lista, departamento=departamento_seleccionado, municipio=municipio_seleccionado, nombre=nombre_seleccionado, moda=moda, media=media, mediana=mediana, desvEst=desvEst, estimacion_con_k=Estimacion, img3=imagen_prediccion_k)
+    return render_template('prediccion.html', data=resultadoNombre, datos=datos_ordenados, mes=mes, valor=valor, img1=imagen_prediccion, img2= imagen_datos, prediccion=prediccion, resultado_nombre=resultado_nombre_lista, departamento=departamento_seleccionado, municipio=municipio_seleccionado, nombre=nombre_seleccionado, moda=moda, media=media, mediana=mediana, desvEst=desvEst, estimacion_con_k=Estimacion, img3=imagen_prediccion_k)
+
+
+
+@app.route('/otrapagina')
+def otrapagina():
+    # Puedes realizar lógica específica para esta página si es necesario
+    return render_template('otrapagina.html')
 
 #Si está en la página principal, llama a la función
 if __name__=='__main__':

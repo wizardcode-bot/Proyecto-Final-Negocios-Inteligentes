@@ -1,0 +1,59 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: linear-gradient(to bottom right, #AED6F1, #F9EBB2);
+} 
+
+.cuadro {
+    position: fixed;
+    top: 100px;
+    left: 100px;
+    background-color: rgb(255, 255, 255);
+    width: 220px;
+    height: 80px; 
+    border-radius: 5px;
+    border: 3px solid rgb(245, 128, 128);
+    padding: 10px;
+    font-size: 2.3rem;
+    z-index: 999;
+    text-align: center;
+}
+.mapadiv {
+    width: 40%;
+    margin: auto;
+    margin-bottom: 10%;
+}
+
+.mapadiv path{
+fill: #FFF8C9;
+stroke: black; 
+stroke-width: 2px;
+}
+
+svg path {
+    cursor: pointer;
+}
+iframe.nav {
+position:relative;
+top: 0px;
+left: 0;
+width: 100%;
+}
+.boton-enlace {
+display: inline-block;
+padding: 10px 20px;
+font-size: 16px;
+text-align: center;
+text-decoration: none;
+background-color: #4CAF50; /* Color de fondo verde, puedes cambiarlo */
+color: white;
+border: 1px solid #4CAF50;
+border-radius: 5px;
+cursor: pointer;
+position: absolute;
+top: 10px;
+right: 10px;
+}

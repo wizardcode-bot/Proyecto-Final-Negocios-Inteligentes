@@ -1,24 +1,193 @@
+<!-- Archivo en el que se presentan los datos obtenidos en python -->
+
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web App</title>
+    <title>Prediccion</title>
+    <!-- llama al archivo css -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='Css/estilos.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='Css/prediccion.css') }}">
 </head>
 <body>
-    <form action="/" method="POST">
+
+    <a href="index.html" class="boton-enlace">Volver a Index</a>
+
+    <!-- prediccion.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predicción</title>
+</head>
+<body>
+    <h1>Predicción de Brillo Solar</h1>
+
+    <form method="post" action="/">
         <label for="departamento">Departamento:</label>
-        <input type="text" name="departamento" required><br>
+        <input type="text" name="departamento" value="{{ departamento }}" required>
 
         <label for="municipio">Municipio:</label>
-        <input type="text" name="municipio" required><br>
+        <input type="text" name="municipio" value="{{ municipio }}" required>
 
         <label for="nombre">Nombre:</label>
-        <input type="text" name="nombre" required><br>
+        <input type="text" name="nombre" value="{{ nombre }}" required>
 
-        <input type="submit" value="Filtrar">
+        <button type="submit">Realizar Predicción</button>
     </form>
 
-    <!-- Mostrar resultados y gráficos aquí -->
+    <!-- Resto del contenido HTML y visualización de resultados -->
+
+    <img src="data:image/png;base64,{{ img1 }}" alt="Predicción Gráfica">
+    <img src="data:image/png;base64,{{ img2 }}" alt="Datos de Brillo Solar Registrados">
+    <img src="data:image/png;base64,{{ img3 }}" alt="Predicción con 'k'">
+
+    <!-- Resto del contenido HTML y visualización de resultados -->
+</body>
+</html>
+
+    <div class="selectedName">
+        <table class="styled-table">
+            <thead>
+                <tr>
+                    <th>NOMBRE</th>
+                    <th>MUNICIPIO</th>
+                    <th>DEPARTAMENTO</th>
+                    <th>ENE</th>
+                    <th>FEB</th>
+                    <th>MAR</th>
+                    <th>ABR</th>
+                    <th>MAY</th>
+                    <th>JUN</th>
+                    <th>JUL</th>
+                    <th>AGO</th>
+                    <th>SEP</th>
+                    <th>OCT</th>
+                    <th>NOV</th>
+                    <th>DIC</th>
+                    <th>ANUAL</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in resultado_nombre %}
+                    <tr>
+                        <td>{{ item['NOMBRE'] }}</td>
+                        <td>{{ item['MUNICIPIO'] }}</td>
+                        <td>{{ item['DEPARTAMENTO'] }}</td>
+                        <td>{{ item['ENE']|round(2) }}</td>
+                        <td>{{ item['FEB']|round(2) }}</td>
+                        <td>{{ item['MAR']|round(2) }}</td>
+                        <td>{{ item['ABR']|round(2) }}</td>
+                        <td>{{ item['MAY']|round(2) }}</td>
+                        <td>{{ item['JUN']|round(2) }}</td>
+                        <td>{{ item['JUL']|round(2) }}</td>
+                        <td>{{ item['AGO']|round(2) }}</td>
+                        <td>{{ item['SEP']|round(2) }}</td>
+                        <td>{{ item['OCT']|round(2) }}</td>
+                        <td>{{ item['NOV']|round(2) }}</td>
+                        <td>{{ item['DIC']|round(2) }}</td>
+                        <td>{{ item['ANUAL']|round(2) }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="graficos">
+        <img src="data:image/png;base64,{{ img1 }}"
+            alt="Modelo de Regresión Polinómica y Predicción">
+         <img src="data:image/png;base64,{{ img2 }}" alt="Grafica de Datos">
+    </div>  
+
+    <!-- tabla con los datos ordenados de menor a mayor -->
+    <div class="container">
+        <table class="meses-valores-table"><!-- Tabla -->
+            <thead><!-- Encabezado de la tabla -->
+                <tr><!-- Filas -->
+                    <th>Meses</th>
+                    <th>Valores</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for mes, valor in datos %}
+                <tr>
+                    <td>{{ mes }}</td> <!-- Celdas -->
+                    <td>{{ valor|round(3) }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        
+        
+        <table class="styled-table">
+            <thead>
+                <tr>
+                    <th>Variable</th>
+                    <th>Valor</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Predicción</td>
+                    <td>{{ prediccion|round(3) }}</td>
+                </tr>
+                <tr>
+                    <td>Moda</td>
+                    <td>{{ moda|round(3) }}</td>
+                </tr>
+                <tr>
+                    <td>Media</td>
+                    <td>{{ media|round(3) }}</td>
+                </tr>
+                <tr>
+                    <td>Mediana</td>
+                    <td>{{ mediana|round(3) }}</td>
+                </tr>
+                <tr>
+                    <td>Desviación Estándar</td>
+                    <td>{{ desvEst|round(3) }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <hr class="linea-horizontal">
+
+    <div class="graficos">
+        <img src="data:image/png;base64,{{ img3 }}"
+            alt="Modelo de Regresión Polinómica y Predicción con k">
+    </div>  
+
+    <div class="container prediccion-con-k-container">
+        <table class="styled-table-k">
+            <thead>
+                <tr>
+                    <th>Variable</th>
+                    <th>Valor</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Predicción con k</td>
+                    <td>{{ estimacion_con_k|round(3) }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+    <!-- Muestra los dato en una lista desordenada -->
+    <!-- <ul>
+        {% for c in data.cursos %}
+        <li>{{ c }}</li>
+        {% endfor %}
+    </ul> -->
+
+    
+    <!-- llama al archivo javascrip -->
+    <script src="{{ url_for('static', filename='Js/layout.js') }}"></script>
 </body>
 </html>
