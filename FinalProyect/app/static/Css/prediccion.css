@@ -51,12 +51,12 @@ text-align: center;
 text-decoration: none;
 background-color: #4CAF50; /* Color de fondo verde, puedes cambiarlo */
 color: white;
-border: 1px solid #4CAF50;
+border: 1px solid #000000;
 border-radius: 5px;
 cursor: pointer;
 position: absolute;
-top: 10px;
-right: 10px;
+top: 20px;
+right: 20px;
 }
 
 /* codigos de estilos para datos de predicción */
@@ -68,6 +68,7 @@ table {
 
 th, td {
     border: 1px solid #000000;
+    border-bottom: 1px solid #000000;
     text-align: left;
     padding: 4px;
 }
@@ -75,35 +76,62 @@ th, td {
 /* primera tabla */
 .selectedName{
     position:relative;
+    margin-top: 100px;
 }
 
 .graficos{
     width: fit-content;
+    margin: auto;
 }
 
+/* primer tabla, con los datos obtenidos en desorden */
+
+/* Estilos para la tabla styled-table */
 .styled-table {
-    width: 40%;
+    width: 100%;
     border-collapse: collapse;
     margin: 25px 0;
     font-size: 18px;
     text-align: center;
-    margin-right: 20px;
-    margin-top: 50px;
 }
 
 .styled-table th, .styled-table td {
     padding: 12px 15px;
-    border-bottom: 1px solid #ddd;
-}
-
-.styled-table th {
+    border-bottom: 1px solid #000000;
     background-color: #f2f2f2;
 }
 
-.styled-table tbody tr:hover {
-    background-color: #f5f5f5;
+.styled-table th {
+    background-color: #ddd; /* Cambia el color de fondo del encabezado según tu preferencia */
+    color: black;
 }
 
+.styled-table tr:hover {
+    background-color: #000000;
+    color: white;
+}
+
+/* Añadir un borde a las celdas */
+.styled-table td, .styled-table th {
+    border: 1px solid #ddd;
+}
+
+/* Añadir espacio entre las celdas */
+.styled-table td, .styled-table th {
+    padding: 8px;
+}
+
+/* Alternar colores de fondo para filas */
+.styled-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.styled-table tbody tr:hover {
+    background-color: #ddd;
+    color: #000000;
+}
+
+/* segunda tabla, con los meses y los valores ordenados */
 .meses-valores-table {
     width: 50%;
     margin-top: 25px;
@@ -113,6 +141,8 @@ th, td {
 .meses-valores-table th, .meses-valores-table td {
     padding: 10px;
     text-align: center;
+    background-color: #ddd; /* Color de fondo para th y tr */
+    color: black;
 }
 
 .meses-valores-table th {
@@ -127,6 +157,38 @@ th, td {
 .meses-valores-table tbody tr:hover {
     background-color: #ddd;
 }
+
+/* tercera tabla, con la prediccion y estadística */
+.styled-table-otra {
+    width: 40%;
+    border-collapse: collapse;
+    margin-top: 25px;
+    margin-right: 20px;
+}
+
+.styled-table-otra th, .styled-table-otra td {
+    border: 1px solid black;
+    padding: 10px;
+    text-align: center;
+    background-color: #ddd; /* Color de fondo para th y tr */
+    color: black;
+}
+
+.styled-table-otra th {
+    background-color: #f2f2f2; /* Cambia el color de fondo del encabezado según tu preferencia */
+    color: black;
+}
+
+.styled-table-otra tbody tr:nth-child(even) {
+    background-color: #ddd;
+    color: #000;
+}
+
+.styled-table-otra tbody tr:hover {
+    background-color: #f2f2f2;
+    color: #000000;
+}
+
 
 /* Estilos para colocar las tablas una al lado de la otra */
 .container {
