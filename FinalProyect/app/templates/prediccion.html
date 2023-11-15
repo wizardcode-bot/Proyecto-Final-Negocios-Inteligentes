@@ -7,12 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prediccion</title>
     <!-- llama al archivo css -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='Css/estilos.css') }}">
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='Css/estilos.css') }}"> -->
     <link rel="stylesheet" href="{{ url_for('static', filename='Css/prediccion.css') }}">
 </head>
 <body>
 
-    <a href="index.html" class="boton-enlace">Volver a Index</a>
+    <a href="{{ url_for('index') }}" class="boton-enlace">Volver a Index</a>
 
     <!-- prediccion.html -->
 
@@ -24,7 +24,7 @@
     <title>Predicción</title>
 </head>
 <body>
-    <h1>Predicción de Brillo Solar</h1>
+    <!-- <h1>Predicción de Brillo Solar</h1>
 
     <form method="post" action="/">
         <label for="departamento">Departamento:</label>
@@ -37,15 +37,8 @@
         <input type="text" name="nombre" value="{{ nombre }}" required>
 
         <button type="submit">Realizar Predicción</button>
-    </form>
+    </form> -->
 
-    <!-- Resto del contenido HTML y visualización de resultados -->
-
-    <img src="data:image/png;base64,{{ img1 }}" alt="Predicción Gráfica">
-    <img src="data:image/png;base64,{{ img2 }}" alt="Datos de Brillo Solar Registrados">
-    <img src="data:image/png;base64,{{ img3 }}" alt="Predicción con 'k'">
-
-    <!-- Resto del contenido HTML y visualización de resultados -->
 </body>
 </html>
 

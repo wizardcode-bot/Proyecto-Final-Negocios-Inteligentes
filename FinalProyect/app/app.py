@@ -12,7 +12,7 @@ app = Flask(__name__)
 #Se indica que es la ruta raíz
 @app.route('/', methods=['GET', 'POST'])
 #Se crea una vista llamada index que se expresa en forma de una función
-def index():
+def prediccion():
 
     if request.method == 'POST':
      # Obtener datos del formulario
@@ -227,10 +227,30 @@ def index():
 
 
 
-@app.route('/otrapagina')
-def otrapagina():
+@app.route('/index')
+def index():
     # Puedes realizar lógica específica para esta página si es necesario
-    return render_template('otrapagina.html')
+    return render_template('index.html')
+
+@app.route('/medicion')
+def medicion():
+    # Puedes realizar lógica específica para esta página si es necesario
+    return render_template('medicion.html')
+
+@app.route('/formula')
+def formula():
+    # Puedes realizar lógica específica para esta página si es necesario
+    return render_template('formula.html')
+
+@app.route('/brillo_solar')
+def brillo_solar():
+    # Puedes realizar lógica específica para esta página si es necesario
+    return render_template('brillo_solar.html')
+
+@app.route('/soluciones_g')
+def soluciones_g():
+    # Puedes realizar lógica específica para esta página si es necesario
+    return render_template('soluciones_g.html')
 
 #Si está en la página principal, llama a la función
 if __name__=='__main__':

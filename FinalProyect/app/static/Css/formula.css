@@ -1,0 +1,212 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@900&display=swap');
+
+*,
+*::before,
+*::after
+{
+	margin:0;
+	padding:0;
+    box-sizing: inherit;
+}
+/* Estilos generales */
+body {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+	background: linear-gradient(to bottom right, #AED6F1, #F9EBB2);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6; /* Ajusta el espaciado entre líneas */
+}
+
+.titulo {
+	background-color: #333;
+    color: rgb(240, 240, 240);
+    text-align: center;
+    padding: 20px;
+	padding-top: 120px;
+	
+	
+}
+
+.content h2,
+.content p,
+.content ol,
+.content ul {
+    margin-bottom: 25px; /* Ajusta el margen inferior */
+    margin-left: 20px;   /* Ajusta el margen izquierdo */
+    margin-right: 20px;  /* Ajusta el margen derecho */
+}
+
+.content img {
+    margin-bottom: 20px; /* Ajusta el margen inferior de las imágenes */
+	border-radius: 5px;
+}
+
+.titulo h1 {
+    font-size: 40px;
+}
+
+main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.content {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+img {
+    max-width: 100%;
+    height: auto;
+    display: block; /* Para evitar espacios no deseados */
+    margin: 0 auto; /* Centrar la imagen horizontalmente */
+}
+
+/* Media query para pantallas más pequeñas (por ejemplo, dispositivos móviles) */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 28px;
+    }
+    
+    main {
+        padding: 10px;
+    }
+    
+    .content {
+        padding: 10px;
+    }
+}
+
+/*Nav*/
+header{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(1, 1, 1, 0.192);
+    padding: 0px 10%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    letter-spacing: 1px; 
+    font-family: 'Poppins', sans-serif;
+ }
+
+/*Titulo*/
+.logo{
+	font-size: 25px;
+	text-transform: uppercase;
+	color: white;
+	font-weight: 700px;
+}
+
+
+.header .navigation ul li {
+    float: left;
+    display: table-cell;
+}
+
+
+nav > ul > li:hover > ul {
+	display:flex;
+	height:100%;
+    width: auto;
+    left: 722px;
+    letter-spacing: 1px; 
+}
+/*formula y medicion*/
+nav > ul > li > ul {
+	display:block;
+	position:absolute;
+	background-color: rgba(1, 1, 1, 0.192);
+	left:0;
+	right:0;
+	overflow:hidden;
+	height:0%;
+	-webkit-transition: all .3s ease;
+	-moz-transition: all .3s ease;
+	-ms-transition: all .3s ease;
+	-o-transition: all .3s ease;
+	transition: all .3s ease;
+}
+/*lo que contienen la barra de navegacion*/
+nav > ul li a {
+	color:#fff;
+	display:block;
+	line-height:20px;
+	padding:20px;
+	position: relative;
+	text-align:center;
+	text-decoration:none;
+	-webkit-transition: all .3s ease;
+	-moz-transition: all .3s ease;
+	-ms-transition: all .3s ease;
+	-o-transition: all .3s ease;
+	transition: all .3s ease;
+}
+
+nav > ul > li > ul > li a:hover {
+	background:#5da5a2;
+}
+nav > ul > li > a span {
+	display:block;
+	height:100%;
+	width:100%;
+	left:0;
+	position:absolute;
+	top:-55px;
+	-webkit-transition: all .3s ease;
+	-moz-transition: all .3s ease;
+	-ms-transition: all .3s ease;
+	-o-transition: all .3s ease;
+	transition: all .3s ease;
+}
+/*Donde se esconde la barra del icon*/
+nav > ul > li > a span .icon {
+	display:block;
+	line-height:60px;
+}
+
+nav > ul > li > a:hover > span {
+	top:0;
+}
+
+/*Color al icon cuando baje*/
+nav ul li a .primero {
+	background:#0e5061;
+}
+
+nav ul li a .segundo {
+	background:#5da5a2;
+}
+
+nav ul li a .tercero {
+	background:#f25724;
+}
+
+nav ul li a .cuarto {
+	background:#174459;
+}
+
+/*Para el responsive se le da caracteristicas para un movil*/
+@media (max-width: 950px) {
+	.header label {
+	  display: initial;
+	}
+  
+	.header {
+	  padding: 20px 10%;
+	}
+  
+	.header .navigation {
+	  position: absolute;
+	  top: 100%;
+	  left: 0;
+	  right: 0;
+
+	  display: none;
+	}
+  }
