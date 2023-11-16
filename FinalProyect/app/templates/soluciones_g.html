@@ -3,9 +3,139 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='Css/prediccion.css') }}">
     <title>Analisis</title>
 </head>
 <body>
-    <h1>Análisis</h1>
+    <a href="{{ url_for('index') }}" class="boton-enlace">Volver a Index</a>
+    <div class="selectedName">
+        <table class="styled-table">
+            <thead>
+                <tr>
+                    <th>NOMBRE</th>
+                    <th>MUNICIPIO</th>
+                    <th>DEPARTAMENTO</th>
+                    <th>ENE</th>
+                    <th>FEB</th>
+                    <th>MAR</th>
+                    <th>ABR</th>
+                    <th>MAY</th>
+                    <th>JUN</th>
+                    <th>JUL</th>
+                    <th>AGO</th>
+                    <th>SEP</th>
+                    <th>OCT</th>
+                    <th>NOV</th>
+                    <th>DIC</th>
+                    <th>ANUAL</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in resultado_nombre %}
+                    <tr>
+                        <td>{{ item['NOMBRE'] }}</td>
+                        <td>{{ item['MUNICIPIO'] }}</td>
+                        <td>{{ item['DEPARTAMENTO'] }}</td>
+                        <td>{{ item['ENE']|round(2) }}</td>
+                        <td>{{ item['FEB']|round(2) }}</td>
+                        <td>{{ item['MAR']|round(2) }}</td>
+                        <td>{{ item['ABR']|round(2) }}</td>
+                        <td>{{ item['MAY']|round(2) }}</td>
+                        <td>{{ item['JUN']|round(2) }}</td>
+                        <td>{{ item['JUL']|round(2) }}</td>
+                        <td>{{ item['AGO']|round(2) }}</td>
+                        <td>{{ item['SEP']|round(2) }}</td>
+                        <td>{{ item['OCT']|round(2) }}</td>
+                        <td>{{ item['NOV']|round(2) }}</td>
+                        <td>{{ item['DIC']|round(2) }}</td>
+                        <td>{{ item['ANUAL']|round(2) }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="graficos">
+        <img src="data:image/png;base64,{{ img1 }}"
+            alt="Modelo de Regresión Polinómica y Predicción">
+        <img src="data:image/png;base64,{{ img2 }}" alt="Grafica de Datos">
+    </div>  
+
+    <!-- tabla con los datos ordenados de menor a mayor -->
+    <div class="container">
+        <table class="meses-valores-table"><!-- Tabla -->
+            <thead><!-- Encabezado de la tabla -->
+                <tr><!-- Filas -->
+                    <th>Meses</th>
+                    <th>Valores</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for mes, valor in datos %}
+                <tr>
+                    <td>{{ mes }}</td> <!-- Celdas -->
+                    <td>{{ valor|round(3) }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        
+        
+        <table class="styled-table-otra"">
+            <thead>
+                <tr>
+                    <th>Variable</th>
+                    <th>Valor</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Predicción</td>
+                    <td>{{ prediccion|round(3) }}</td>
+                </tr>
+                <tr>
+                    <td>Moda</td>
+                    <td>{{ moda|round(3) }}</td>
+                </tr>
+                <tr>
+                    <td>Media</td>
+                    <td>{{ media|round(3) }}</td>
+                </tr>
+                <tr>
+                    <td>Mediana</td>
+                    <td>{{ mediana|round(3) }}</td>
+                </tr>
+                <tr>
+                    <td>Desviación Estándar</td>
+                    <td>{{ desvEst|round(3) }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <hr class="linea-horizontal">
+
+    <div class="graficos">
+        <img src="data:image/png;base64,{{ img3 }}"
+            alt="Modelo de Regresión Polinómica y Predicción con k">
+    </div>  
+
+    <div class="container prediccion-con-k-container">
+        <table class="styled-table-k">
+            <thead>
+                <tr>
+                    <th>Variable</th>
+                    <th>Valor</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Predicción con k</td>
+                    <td>{{ estimacion_con_k|round(3) }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
 </body>
 </html>

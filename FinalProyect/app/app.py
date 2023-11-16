@@ -9,10 +9,15 @@ import base64
 
 app = Flask(__name__)
 
-#Se indica que es la ruta raíz
-@app.route('/', methods=['GET', 'POST'])
-#Se crea una vista  que se expresa en forma de una función
-def formulario():
+@app.route('/')
+def index():
+    
+    return render_template('index.html')
+
+
+@app.route('/prediccion', methods=['GET', 'POST'])
+def prediccion():
+
     # Ruta del archivo Excel
     ruta = 'C:\\Users\\HOME\\Downloads\\finalPoyectNegocios\\archivos\\DatosCompletos.xlsx'
 
@@ -27,15 +32,85 @@ def formulario():
 
     # Muestra los departamentos sin repetirlos en la columna "DEPARTAMENTO"
     departamentos_unicos = data['DEPARTAMENTO'].unique()
-    print("\nDepartamentos en la columna 'DEPARTAMENTO':")
-    for departamento in departamentos_unicos:
-        print(departamento)
 
-    return render_template('formulario.html', departamentos=departamentos_unicos)
+    return render_template('prediccion.html', departamentos=departamentos_unicos)
+
+@app.route('/municipios', methods=['GET', 'POST'])
+#Se crea una vista  que se expresa en forma de una función
+def municipios():
+    if request.method == 'POST':
+     # Obtener datos del formulario
+     departamento_seleccionado = request.form.get("departamento")
+    else:
+        # Valores predeterminados o manejar el caso en que no se haya enviado el formulario aún
+        departamento_seleccionado = ""
+
+       # Ruta del archivo Excel
+    ruta = 'C:\\Users\\HOME\\Downloads\\finalPoyectNegocios\\archivos\\DatosCompletos.xlsx'
+
+    # Cargar el archivo Excel en un DataFrame
+    data = pd.read_excel(ruta, sheet_name='Brillo Solar')
+
+    # Ruta del archivo CSV de salida
+    csv_file = "PromClimat.csv"
+
+    # Guardar los datos en un archivo CSV
+    data.to_csv(csv_file, index=False)
+
+    #Busca en las columnas el departamento seleccionado
+    resultadoDepartamento = data.loc[data['DEPARTAMENTO'] == departamento_seleccionado]
+
+    #FILTRAR MUNICIPIO
+    municipio_unico = resultadoDepartamento['MUNICIPIO'].unique()
+
+    return render_template('municipios.html', municipios=municipio_unico)
+
+@app.route('/formulario', methods=['GET', 'POST'])
+#Se crea una vista  que se expresa en forma de una función
+def formulario():
+    if request.method == 'POST':
+     # Obtener datos del formulario
+     municipio_seleccionado = request.form.get("municipio")
+    else:
+        # Valores predeterminados o manejar el caso en que no se haya enviado el formulario aún
+        municipio_seleccionado = ""
+
+       # Ruta del archivo Excel
+    ruta = 'C:\\Users\\HOME\\Downloads\\finalPoyectNegocios\\archivos\\DatosCompletos.xlsx'
+
+    # Cargar el archivo Excel en un DataFrame
+    data = pd.read_excel(ruta, sheet_name='Brillo Solar')
+
+    # Ruta del archivo CSV de salida
+    csv_file = "PromClimat.csv"
+
+    # Guardar los datos en un archivo CSV
+    data.to_csv(csv_file, index=False)
+
+    resultadoMunicipio = data.loc[data['MUNICIPIO'] == municipio_seleccionado]
+
+    resultado_municipio_lista = resultadoMunicipio.to_dict(orient='records')
+
+    return render_template('formulario.html', resultado_municipio=resultado_municipio_lista)
 
 
-@app.route('/prediccion', methods=['GET', 'POST'])
-def prediccion():
+@app.route('/medicion')
+def medicion():
+    # Puedes realizar lógica específica para esta página si es necesario
+    return render_template('medicion.html')
+
+@app.route('/formula')
+def formula():
+    # Puedes realizar lógica específica para esta página si es necesario
+    return render_template('formula.html')
+
+@app.route('/brillo_solar')
+def brillo_solar():
+    # Puedes realizar lógica específica para esta página si es necesario
+    return render_template('brillo_solar.html')
+
+@app.route('/soluciones_g', methods=['GET', 'POST'])
+def soluciones_g():
 
     if request.method == 'POST':
      # Obtener datos del formulario
@@ -249,34 +324,7 @@ def prediccion():
     imagen_prediccion_k = base64.b64encode(img3.read()).decode() 
 
     
-    return render_template('prediccion.html', data=resultadoNombre, datos=datos_ordenados, mes=mes, valor=valor, img1=imagen_prediccion, img2= imagen_datos, prediccion=prediccion, resultado_nombre=resultado_nombre_lista, departamento=departamento_seleccionado, municipio=municipio_seleccionado, nombre=nombre_seleccionado, moda=moda, media=media, mediana=mediana, desvEst=desvEst, estimacion_con_k=Estimacion, img3=imagen_prediccion_k)
-
-
-
-@app.route('/index')
-def index():
-    # Puedes realizar lógica específica para esta página si es necesario
-    return render_template('index.html')
-
-@app.route('/medicion')
-def medicion():
-    # Puedes realizar lógica específica para esta página si es necesario
-    return render_template('medicion.html')
-
-@app.route('/formula')
-def formula():
-    # Puedes realizar lógica específica para esta página si es necesario
-    return render_template('formula.html')
-
-@app.route('/brillo_solar')
-def brillo_solar():
-    # Puedes realizar lógica específica para esta página si es necesario
-    return render_template('brillo_solar.html')
-
-@app.route('/soluciones_g')
-def soluciones_g():
-    # Puedes realizar lógica específica para esta página si es necesario
-    return render_template('soluciones_g.html')
+    return render_template('soluciones_g.html', data=resultadoNombre, datos=datos_ordenados, mes=mes, valor=valor, img1=imagen_prediccion, img2= imagen_datos, prediccion=prediccion, resultado_nombre=resultado_nombre_lista, departamento=departamento_seleccionado, municipio=municipio_seleccionado, nombre=nombre_seleccionado, moda=moda, media=media, mediana=mediana, desvEst=desvEst, estimacion_con_k=Estimacion, img3=imagen_prediccion_k)
 
 #Si está en la página principal, llama a la función
 if __name__=='__main__':

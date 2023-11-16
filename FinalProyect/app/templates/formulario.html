@@ -4,53 +4,71 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='Css/formulario.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='Css/prediccion.css') }}">
     <title>Ingreso de datos</title>
 </head>
 <body>
     <h1>Predicción de Brillo Solar</h1>
 
-     <!-- Muestra los datos en una lista desordenada -->
-    <!-- <ul>
-        {% for c in departamentos %}
-        <li>{{ c }}</li>
-        {% endfor %}
-    </ul> -->
-
-    <table>
+    <table class="styled-table">
         <thead>
             <tr>
-                <th>#</th>
-                <th>Dato</th>
+                <th>NOMBRE</th>
+                <th>MUNICIPIO</th>
+                <th>DEPARTAMENTO</th>
+                <th>ENE</th>
+                <th>FEB</th>
+                <th>MAR</th>
+                <th>ABR</th>
+                <th>MAY</th>
+                <th>JUN</th>
+                <th>JUL</th>
+                <th>AGO</th>
+                <th>SEP</th>
+                <th>OCT</th>
+                <th>NOV</th>
+                <th>DIC</th>
+                <th>ANUAL</th>
             </tr>
         </thead>
         <tbody>
-            {% for c in departamentos %}        
-            <tr>
-                <td>{{ loop.index }}</td>
-                <td>{{ c }}</td>
-            </tr>
+            {% for item in resultado_municipio %}
+                <tr>
+                    <td>{{ item['NOMBRE'] }}</td>
+                    <td>{{ item['MUNICIPIO'] }}</td>
+                    <td>{{ item['DEPARTAMENTO'] }}</td>
+                    <td>{{ item['ENE']|round(2) }}</td>
+                    <td>{{ item['FEB']|round(2) }}</td>
+                    <td>{{ item['MAR']|round(2) }}</td>
+                    <td>{{ item['ABR']|round(2) }}</td>
+                    <td>{{ item['MAY']|round(2) }}</td>
+                    <td>{{ item['JUN']|round(2) }}</td>
+                    <td>{{ item['JUL']|round(2) }}</td>
+                    <td>{{ item['AGO']|round(2) }}</td>
+                    <td>{{ item['SEP']|round(2) }}</td>
+                    <td>{{ item['OCT']|round(2) }}</td>
+                    <td>{{ item['NOV']|round(2) }}</td>
+                    <td>{{ item['DIC']|round(2) }}</td>
+                    <td>{{ item['ANUAL']|round(2) }}</td>
+                </tr>
             {% endfor %}
         </tbody>
     </table>
 
+    <form method="post" action="/soluciones_g">
 
-    <form method="post" action="/prediccion">
-        <label for="departamento">Departamento:</label>
-        <input type="text" name="departamento" value="{{ departamento }}" required>
-
-        <label for="municipio">Municipio:</label>
-        <input type="text" name="municipio" value="{{ municipio }}" required>
-
-        <label for="nombre">Nombre:</label>
+        <label for="nombre">Ingrese el Lugar a filtrar</label>
         <input type="text" name="nombre" value="{{ nombre }}" required>
 
-        <label for="rangoPrediccion">Mes para predicción regresion:</label>
+        <label for="rangoPrediccion">Mes para predicción con regresion:</label>
         <input type="number" name="rangoPrediccion" min="13" max="20" required><br>
 
-        <label for="rangoPrediccion">Mes para predicción k:</label>
+        <label for="rangoPrediccion">Mes para predicción con k:</label>
         <input type="number" name="rango_k" min="13" max="20" required><br>
 
         <button type="submit">Realizar Predicción</button>
     </form>
+
+    
 </body>
 </html>

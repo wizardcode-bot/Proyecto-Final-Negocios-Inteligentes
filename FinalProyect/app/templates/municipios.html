@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='Css/formulario.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='Css/prediccion.css') }}">
+    <title>Ingreso de datos</title>
+</head>
+<body>
+    <h1>Predicción de Brillo Solar</h1>
+
+    <table>
+            <thead>
+            <tr>
+                <th>#</th>
+                    <th>Dato</th>
+            </tr>
+        </thead>
+            <tbody>
+            {% for c in municipios %}        
+            <tr>
+                    <td>{{ loop.index }}</td>
+                <td>{{ c }}</td>
+            </tr>
+                {% endfor %}
+        </tbody>
+    </table>
+
+    <form method="post" action="/formulario">
+
+        <label for="municipio">Ingrese el Municipio a filtrar</label>
+        <input type="text" name="municipio" value="{{ municipio }}" required>
+
+        <button type="submit">Filtrar Municipio</button>
+    </form>
+
+    
+</body>
+</html>
