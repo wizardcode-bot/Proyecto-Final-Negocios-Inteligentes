@@ -12,18 +12,27 @@ app = Flask(__name__)
 #Se indica que es la ruta raíz
 @app.route('/', methods=['GET', 'POST'])
 #Se crea una vista llamada index que se expresa en forma de una función
+def formulario():
+    return render_template('formulario.html')
+
+#Se indica que es la ruta raíz
+@app.route('/prediccion', methods=['GET', 'POST'])
+#Se crea una vista llamada index que se expresa en forma de una función
 def prediccion():
 
     if request.method == 'POST':
      # Obtener datos del formulario
-     departamento_seleccionado = request.form['departamento']
-     municipio_seleccionado = request.form['municipio']
-     nombre_seleccionado = request.form['nombre']
+     departamento_seleccionado = request.form.get("departamento")
+     municipio_seleccionado = request.form.get("municipio")
+     nombre_seleccionado = request.form.get("nombre")
+     rangoPrediccion = int(request.form.get("rangoPrediccion"))
+     rango_k = int(request.form.get("rango_k"))
     else:
         # Valores predeterminados o manejar el caso en que no se haya enviado el formulario aún
         departamento_seleccionado = ""
         municipio_seleccionado = ""
         nombre_seleccionado = ""
+        rangoPrediccion = ""
 
     # Ruta del archivo Excel
     ruta = 'C:\\Users\\HOME\\Downloads\\finalPoyectNegocios\\archivos\\DatosCompletos.xlsx'
@@ -44,7 +53,7 @@ def prediccion():
         print(departamento)
 
     # Solicita al usuario que ingrese el nombre del departamento a filtrar
-    departamento_seleccionado = input("\nIngresa el nombre del Departamento que deseas filtrar: ")
+    # departamento_seleccionado = input("\nIngresa el nombre del Departamento que deseas filtrar: ")
 
     #Busca en las columnas el departamento seleccionado
     resultadoDepartamento = data.loc[data['DEPARTAMENTO'] == departamento_seleccionado]
@@ -59,7 +68,7 @@ def prediccion():
         print(municipio)
 
     # Solicita al usuario que ingrese el nombre del municipio a filtrar
-    municipio_seleccionado = input("\nIngresa el nombre del Municipio que deseas filtrar: ")
+    # municipio_seleccionado = input("\nIngresa el nombre del Municipio que deseas filtrar: ")
 
     #Busca en las columnas el municipio seleccionado
     resultadoMunicipio = data.loc[data['MUNICIPIO'] == municipio_seleccionado]
@@ -74,7 +83,7 @@ def prediccion():
         print(nombre)
 
     # Solicita al usuario que ingrese el nombre del nombre a filtrar
-    nombre_seleccionado = input("\nIngresa el nombre del lugar que deseas filtrar: ")
+    # nombre_seleccionado = input("\nIngresa el nombre del lugar que deseas filtrar: ")
 
     resultadoNombre = data.loc[data['NOMBRE'] == nombre_seleccionado]
     print(resultadoNombre)
@@ -138,7 +147,7 @@ def prediccion():
     print(funcPolinomial)
 
     print("\n PREDICCIÓN CON MODELO DE REGRESIÓN POLINOMIAL \n")
-    rangoPrediccion = int(input("A que mes quiere predecir (13 - 15): "))
+    # rangoPrediccion = int(input("A que mes quiere predecir (13 - 15): "))
 
     # Calcula los valores de la función polinómica en el rango dado
     prediccion = funcPolinomial(rangoPrediccion)
@@ -185,7 +194,7 @@ def prediccion():
 
     print("\n PREDICCIÓN CON 'K' ")
     print("\nK tiene un valor de: ", k)
-    rango_k = float(input("\nA que mes quiere predecir (13 - 20): ")) #Entre 2000 y 2020
+    # rango_k = float(input("\nA que mes quiere predecir (13 - 20): ")) #Entre 2000 y 2020
     if (rango_k > 2026):
         print("Número erróneo")
     #numero4= rango_k - 2000
