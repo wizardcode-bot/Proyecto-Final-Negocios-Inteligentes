@@ -11,13 +11,30 @@ app = Flask(__name__)
 
 #Se indica que es la ruta raíz
 @app.route('/', methods=['GET', 'POST'])
-#Se crea una vista llamada index que se expresa en forma de una función
+#Se crea una vista  que se expresa en forma de una función
 def formulario():
-    return render_template('formulario.html')
+    # Ruta del archivo Excel
+    ruta = 'C:\\Users\\HOME\\Downloads\\finalPoyectNegocios\\archivos\\DatosCompletos.xlsx'
 
-#Se indica que es la ruta raíz
+    # Cargar el archivo Excel en un DataFrame
+    data = pd.read_excel(ruta, sheet_name='Brillo Solar')
+
+    # Ruta del archivo CSV de salida
+    csv_file = "PromClimat.csv"
+
+    # Guardar los datos en un archivo CSV
+    data.to_csv(csv_file, index=False)
+
+    # Muestra los departamentos sin repetirlos en la columna "DEPARTAMENTO"
+    departamentos_unicos = data['DEPARTAMENTO'].unique()
+    print("\nDepartamentos en la columna 'DEPARTAMENTO':")
+    for departamento in departamentos_unicos:
+        print(departamento)
+
+    return render_template('formulario.html', departamentos=departamentos_unicos)
+
+
 @app.route('/prediccion', methods=['GET', 'POST'])
-#Se crea una vista llamada index que se expresa en forma de una función
 def prediccion():
 
     if request.method == 'POST':

@@ -3,10 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='Css/formulario.css') }}">
     <title>Ingreso de datos</title>
 </head>
 <body>
     <h1>Predicción de Brillo Solar</h1>
+
+     <!-- Muestra los datos en una lista desordenada -->
+    <!-- <ul>
+        {% for c in departamentos %}
+        <li>{{ c }}</li>
+        {% endfor %}
+    </ul> -->
+
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Dato</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for c in departamentos %}        
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ c }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
 
     <form method="post" action="/prediccion">
         <label for="departamento">Departamento:</label>
