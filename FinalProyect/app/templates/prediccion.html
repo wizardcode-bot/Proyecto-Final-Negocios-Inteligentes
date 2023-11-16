@@ -3,23 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='Css/formulario.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='Css/prediccion.css') }}">
     <title>Ingreso de datos</title>
 </head>
 <body>
     <h1>Predicción de Brillo Solar</h1>
 
-     <!-- Muestra los datos en una lista desordenada -->
-    <!-- <ul>
-        {% for c in departamentos %}
-        <li>{{ c }}</li>
-        {% endfor %}
-    </ul> -->
-
     <a href="{{ url_for('index') }}" class="boton-enlace">Volver a Index</a>
 
-    <table>
+    <table class="filtros_tablas">
         <thead>
             <tr>
                 <th>#</th>
@@ -36,7 +28,7 @@
         </tbody>
     </table>
 
-    <form method="post" action="/municipios">
+    <form class="formulario" method="post" action="/municipios">
         <label for="departamento">Ingrese el Departamento a filtrar</label>
         <input type="text" name="departamento" value="{{ departamento }}" required>
 

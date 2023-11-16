@@ -3,14 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='Css/formulario.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='Css/prediccion.css') }}">
     <title>Ingreso de datos</title>
 </head>
 <body>
     <h1>Predicción de Brillo Solar</h1>
 
-    <table>
+    <table class="filtros_tablas">
             <thead>
             <tr>
                 <th>#</th>
@@ -27,7 +26,7 @@
         </tbody>
     </table>
 
-    <form method="post" action="/formulario">
+    <form class="formulario" method="post" action="/formulario">
 
         <label for="municipio">Ingrese el Municipio a filtrar</label>
         <input type="text" name="municipio" value="{{ municipio }}" required>

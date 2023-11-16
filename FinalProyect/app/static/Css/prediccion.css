@@ -49,39 +49,86 @@ padding: 10px 20px;
 font-size: 16px;
 text-align: center;
 text-decoration: none;
-background-color: #4CAF50; /* Color de fondo verde, puedes cambiarlo */
+background-color: #2D4356; 
 color: white;
 border: 1px solid #000000;
 border-radius: 5px;
 cursor: pointer;
 position: absolute;
-top: 20px;
-right: 20px;
+top: 30px;
+right: 30px;
 }
 
-/* codigos de estilos para datos de predicción */
-
-table {
-    border-collapse: collapse; /*Fusiona los bordes de las celdas para que parezca una tabla continua.*/
-    padding: auto;
+h1{
+    text-align: center;
+    font-family:'Courier New', Courier, monospace;
+    margin-top: 30px;
+    color: #000;
 }
 
-th, td {
-    border: 1px solid #000000;
-    border-bottom: 1px solid #000000;
-    text-align: left;
-    padding: 4px;
+
+.formulario form {
+    max-width: 400px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.formulario label {
+    display: block;
+    margin-bottom: 8px;
+    color: #666;
 }
 
-/* primera tabla */
+.formulario button {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: #3498db;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.formulario button:hover {
+    background-color: #2980b9;
+}
+
+/* tablas con los filtros de departamentos y municipios */
+
+.filtros_tablas table {
+    width: 40%;
+    border-collapse: collapse;
+}
+
+.filtros_tablas th, td {
+    border: 1px solid #000;
+    padding: 8px;
+    text-align: center;
+    background-color: #FAEEE7;
+}
+
+/* .filtros_tablas th {
+    background-color: #EDEDED;
+} */
+.filtros_tablas tbody tr:hover {
+    background-color: #ddd;
+    color: #000000;
+}
+
+/* div de la primera tabla */
 .selectedName{
     position:relative;
-    margin-top: 100px;
+    margin-top: 50px;
 }
 
 .graficos{
     width: fit-content;
     margin: auto;
+    margin-top: 20px;
 }
 
 /* primer tabla, con los datos obtenidos en desorden */
@@ -113,7 +160,7 @@ th, td {
 
 /* Añadir un borde a las celdas */
 .styled-table td, .styled-table th {
-    border: 1px solid #ddd;
+    border: 1px solid #000;
 }
 
 /* Añadir espacio entre las celdas */
@@ -140,6 +187,7 @@ th, td {
 
 .meses-valores-table th, .meses-valores-table td {
     padding: 10px;
+    border: 1px solid #000;
     text-align: center;
     background-color: #ddd; /* Color de fondo para th y tr */
     color: black;
@@ -151,11 +199,11 @@ th, td {
 }
 
 .meses-valores-table tbody tr:nth-child(even) {
-    background-color: #f2f2f2;
+    background-color: #F7ECDE;
 }
 
 .meses-valores-table tbody tr:hover {
-    background-color: #ddd;
+    background-color: #FBF8F1;
 }
 
 /* tercera tabla, con la prediccion y estadística */
@@ -211,13 +259,13 @@ th, td {
 
 /* Estilos para la tabla estimacion_con_k */
 .styled-table-k {
-    width: 30%;
+    width: 40%;
     border-collapse: collapse;
     margin-top: 20px;
 }
 
 .styled-table-k th, .styled-table-k td {
-    border: 1px solid #ddd;
+    border: 1px solid black;
     padding: 10px;
     text-align: center;
 }
@@ -225,6 +273,7 @@ th, td {
 /* Estilos para el contenedor de la predicción con k */
 .prediccion-con-k-container {
     margin-top: 20px;
+    position: absolute;
 }
 
 
