@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='Css/index.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='Css/fonts.css') }}">
     <title>Index</title>
 
 </head>
@@ -25,7 +26,7 @@
         <div class="logo">ANÁLISIS DE DATOS</div>
         <nav class="navigation">
             <ul>
-                <li><a href="{{ url_for('index') }}"><span class="primero"><i class="icon icon-home"></i></span>INICIO</a></li>
+                <li><a href="{{ url_for('index') }}"><span class="primero"><i class="icon icon-home3"></i></span>INICIO</a></li>
                 <li><a href="{{ url_for('brillo_solar') }}"><span class="segundo"><i class="icon icon-lab"></i></span>BRILLO SOLAR</a>
                     <ul>
                         <li><a href="{{ url_for('medicion') }}">MEDICIÓN</a></li>
@@ -33,7 +34,7 @@
                     </ul>
                 </li>
                 <li><a href="{{ url_for('prediccion') }}"><span class="tercero"><i class="icon icon-stats-dots"></i></span>PREDICCIÓN</a></li>
-                <li><a href="{{ url_for('soluciones_g') }}"><span class="cuarto"><i class="icon icon-stats-bars"></i></span>SOLUCIONES GENERALES</a></li>
+                <li><a href="{{ url_for('soluciones_g') }}"><span class="cuarto"><i class="icon icon-book"></i></span>SOLUCIONES GENERALES</a></li>
             </ul>
         </nav>
     </header>

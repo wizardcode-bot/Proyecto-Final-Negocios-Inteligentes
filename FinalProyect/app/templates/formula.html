@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="formula.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='Css/formula.css') }}">
     <title>Medición de Radiación Solar</title>
 </head>
 
@@ -12,15 +12,15 @@
         <div class="logo">ANÁLISIS DE DATOS</div>
         <nav class="navigation">
             <ul>
-                <li><a href="index.html"><span class="primero"><i class="icon icon-home"></i></span>INICIO</a></li>
-                <li><a href="brillo_solar.html"><span class="segundo"><i class="icon icon-lab"></i></span>BRILLO SOLAR</a>
+                <li><a href="{{ url_for('index') }}"><span class="primero"><i class="icon icon-home"></i></span>INICIO</a></li>
+                <li><a href="{{ url_for('brillo_solar') }}"><span class="segundo"><i class="icon icon-lab"></i></span>BRILLO SOLAR</a>
                     <ul>
-                        <li><a href="medicion.html">MEDICIÓN</a></li>
-                        <li><a href="formula.html">FÓRMULA</a></li>
+                        <li><a href="{{ url_for('medicion') }}">MEDICIÓN</a></li>
+                        <li><a href="{{ url_for('formula') }}">FÓRMULA</a></li>
                     </ul>
                 </li>
-                <li><a href="Map.html"><span class="tercero"><i class="icon icon-stats-dots"></i></span>PREDICCIÓN</a></li>
-                <li><a href="#"><span class="cuarto"><i class="icon icon-stats-bars"></i></span>SOLUCIONES GENERALES</a></li>
+                <li><a href="{{ url_for('prediccion') }}"><span class="tercero"><i class="icon icon-stats-dots"></i></span>PREDICCIÓN</a></li>
+                <li><a href="{{ url_for('soluciones_g') }}"><span class="cuarto"><i class="icon icon-stats-bars"></i></span>SOLUCIONES GENERALES</a></li>
             </ul>
         </nav>
     </header>
@@ -33,14 +33,14 @@
 
         <section class="content">
             <h2>La Fórmula de Brillo solar</h2>
-            <p>La fórmula de medición del brillo solar calcula la cantidad de horas al dia en que esta el sol en un area se calcula como:</p>
-            <p>BSa=(BSm)suma de todos los meses/12</p>
-            <p>BSm=(BSd)suma de todos los dias/depende de los dias del mes</p>
+            <p>La fórmula de medición del brillo solar calcula la cantidad de horas al dia en que está el sol en un área, se calcula como:</p>
+            <p>BSa=(BSm) suma de todos los meses/12</p>
+            <p>BSm=(BSd) suma de todos los dias/depende de los dias del mes</p>
             <p>Donde:</p>
             <ul>
                 <li>BSa: Brillo solar total anual</li>
                 <li>BSm: Brillo solar total mensual</li>
-                <li>BSd: Brillo solar total registrador diario</li>
+                <li>BSd: Brillo solar total diario</li>
             </ul>
         </section>
 
@@ -61,7 +61,7 @@
             <h2>Pionero de la Formula</h2>
             <p>A comienzo del siglo XIX, Johannes Ritter descubrió que el Sol, además de luz visible, emite una radiación "invisible" de longitud de onda más corta que el azul y el violeta. Esa banda recibió el nombre de "ultravioleta".
             </p>
-            <img src="/img index/johann.jfif" alt="John Solaris - Creador de la Fórmula">
+            <img src="{{ url_for('static', filename='img index/johann.jfif') }}" alt="John Solaris - Creador de la Fórmula">
         </section>
         
         <section class="content">
@@ -73,7 +73,7 @@
                 <li>Estudios climáticos y ambientales.</li>
                 <li>Optimización de la eficiencia energética.</li>
             </ul>
-            <img src="/img index/diseño.jpg" alt="Paneles Solares - Utilidad de la Medición">
+            <img src="{{ url_for('static', filename='img index/diseño.jpg') }}" alt="Paneles Solares - Utilidad de la Medición">
         </section>
 
     </main>
