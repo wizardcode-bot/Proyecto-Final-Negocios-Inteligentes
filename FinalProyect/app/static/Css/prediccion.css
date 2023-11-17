@@ -5,7 +5,9 @@
 }
 
 body {
-    background: linear-gradient(to bottom right, #AED6F1, #F9EBB2);
+    /* background: linear-gradient(to bottom right, #AED6F1, #F9EBB2); */
+    /* background: linear-gradient(45deg, #b54c4c, #624166, #131313); */
+    background: #0B3846;
 } 
 
 .cuadro {
@@ -45,13 +47,14 @@ width: 100%;
 }
 .boton-enlace {
 display: inline-block;
-padding: 10px 20px;
+padding: 15px 20px;
 font-size: 16px;
 text-align: center;
 text-decoration: none;
-background-color: #2D4356; 
+/* background-color: #0D7E83;  */
+background-color: #56BFB5; 
 color: white;
-border: 1px solid #000000;
+border: 1px solid #ccc;
 border-radius: 5px;
 cursor: pointer;
 position: absolute;
@@ -63,61 +66,170 @@ h1{
     text-align: center;
     font-family:'Courier New', Courier, monospace;
     margin-top: 30px;
-    color: #000;
+    color: white;
 }
 
 
-.formulario form {
+/* Estilos para el formulario con la clase "formulario" */
+.formulario {
     max-width: 400px;
-    margin: 0 auto;
-    background-color: #fff;
-    padding: 20px;
+    margin: 20px;
+    margin-top: 40px ;
+    margin-left: 20px ;
+    margin-bottom: 100px;
+    font-size: larger;
+    padding: 30px;
+    background-color: #f9f9f9;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+    vertical-align: top; /* Para alinear la parte superior */
+    width: 45%; /* Ancho del formulario */
+    position: fixed;
 }
+
 .formulario label {
     display: block;
     margin-bottom: 8px;
-    color: #666;
+    color: #000;
 }
 
-.formulario button {
+.formulario input[type="text"],
+.formulario input[type="number"] {
     width: calc(100% - 22px);
     padding: 10px;
     margin-bottom: 15px;
     border-radius: 5px;
-    border: 1px solid #ccc;
+    border: 1px solid #56BFB5;
+}
+
+.formulario input[type="text"]:focus,
+.formulario input[type="number"]:focus {
+    outline: none;
+    border-color: #3498db;
+}
+
+.formulario button[type="submit"] {
     background-color: #3498db;
     color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
-.formulario button:hover {
+.formulario button[type="submit"]:hover {
     background-color: #2980b9;
 }
 
+/* formulario de la sección formulario.html*/
+.formularioFinal {
+    max-width: 400px;
+    margin: 20px;
+    margin-top: 40px ;
+    margin-left: 40px ;
+    margin-bottom: 100px;
+    font-size: larger;
+    padding: 30px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+    vertical-align: top; /* Para alinear la parte superior */
+    width: 45%; /* Ancho del formulario */
+    /* position: fixed; */
+}
+
+.formularioFinal label {
+    display: block;
+    margin-bottom: 8px;
+    color: #000;
+}
+
+.formularioFinal input[type="text"],
+.formularioFinal input[type="number"] {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid #56BFB5;
+}
+
+.formularioFinal input[type="text"]:focus,
+.formularioFinal input[type="number"]:focus {
+    outline: none;
+    border-color: #3498db;
+}
+
+.formularioFinal button[type="submit"] {
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.formularioFinal button[type="submit"]:hover {
+    background-color: #2980b9;
+}
+
+
 /* tablas con los filtros de departamentos y municipios */
-
-.filtros_tablas table {
+.filtros_tablas {
     width: 40%;
+    margin: 20px;
+    margin-left: 30px;
+    margin-top: 40px;
     border-collapse: collapse;
+    font-family: Arial, sans-serif;
+    table-layout: fixed;
+    display: inline-block;
+    vertical-align: top; /* Para alinear la parte superior */
+    width: 45%; /* Ancho de la tabla */
+    margin-right: 5%; /* Espacio entre la tabla y el formulario */
 }
 
-.filtros_tablas th, td {
-    border: 1px solid #000;
-    padding: 8px;
+.filtros_tablas th {
+    background-color: #f2f2f2;
+    padding: 10px;
+    font-weight: bold;
     text-align: center;
-    background-color: #FAEEE7;
 }
 
-/* .filtros_tablas th {
-    background-color: #EDEDED;
-} */
-.filtros_tablas tbody tr:hover {
-    background-color: #ddd;
-    color: #000000;
+.filtros_tablas td {
+    padding: 8px;
 }
+
+.filtros_tablas tr {
+    background-color: #F2E3DB;
+}
+
+.filtros_tablas tr:hover {
+    background-color: #f2f2f2;
+}
+
+.filtros_tablas th, .filtros_tablas td {
+    border: 2px solid #000;
+    color: #000000;
+    font-size: larger;
+    padding: 10px;
+    text-align: center;
+    width: 20%; /* Ancho igual para ambas columnas */
+}
+
+.filtros_tablas th:nth-child(1),
+.filtros_tablas td:nth-child(1) {
+    width: 5%; /* Ancho para la columna "#" */
+}
+
+.filtros_tablas th:nth-child(2),
+.filtros_tablas td:nth-child(2) {
+    width: 10%; /* Ancho para la columna "Dato" */
+}
+
 
 /* div de la primera tabla */
 .selectedName{
@@ -181,25 +293,30 @@ h1{
 /* segunda tabla, con los meses y los valores ordenados */
 .meses-valores-table {
     width: 50%;
-    margin-top: 25px;
+    margin-top: 50px;
     margin-left: 20px;
+    font-size:large;
 }
 
 .meses-valores-table th, .meses-valores-table td {
     padding: 10px;
-    border: 1px solid #000;
     text-align: center;
-    background-color: #ddd; /* Color de fondo para th y tr */
     color: black;
 }
 
 .meses-valores-table th {
     background-color: #f2f2f2;
     color: black;
+    border: 1px solid #000;
+}
+.meses-valores-table tr {
+    background-color: #F3EEEA;
+    color: black;
+    border: 1px solid #000;
 }
 
 .meses-valores-table tbody tr:nth-child(even) {
-    background-color: #F7ECDE;
+    background-color: #EBE3D5;
 }
 
 .meses-valores-table tbody tr:hover {
@@ -210,15 +327,16 @@ h1{
 .styled-table-otra {
     width: 40%;
     border-collapse: collapse;
-    margin-top: 25px;
-    margin-right: 20px;
+    margin-top: 50px;
+    margin-right: 25px;
+    table-layout: fixed;
+    font-size: large;
 }
 
 .styled-table-otra th, .styled-table-otra td {
     border: 1px solid black;
     padding: 10px;
     text-align: center;
-    background-color: #ddd; /* Color de fondo para th y tr */
     color: black;
 }
 
@@ -227,14 +345,25 @@ h1{
     color: black;
 }
 
+.styled-table-otra tr {
+    background-color: #F3EEEA;
+    color: black;
+    border: 1px solid #000;
+}
+
 .styled-table-otra tbody tr:nth-child(even) {
-    background-color: #ddd;
+    background-color: #EBE3D5;
     color: #000;
 }
 
 .styled-table-otra tbody tr:hover {
-    background-color: #f2f2f2;
+    background-color: #FBF8F1;
     color: #000000;
+}
+
+.styled-table-otra th:first-child,
+.styled-table-otra td:first-child {
+    width: 50%; /* Ancho igual para ambas columnas */
 }
 
 
@@ -253,27 +382,43 @@ h1{
 }
 
 .linea-horizontal {
-    border: 2px solid #000000; /* color y grosor de la línea */
-    margin: 20px 0; /* margen superior e inferior para separar del contenido */ 
+    border: 2px solid #F3EEEA; /* color y grosor de la línea */
+    margin: 30px 30px; /* margen superior e inferior para separar del contenido */ 
 }
 
 /* Estilos para la tabla estimacion_con_k */
-.styled-table-k {
-    width: 40%;
-    border-collapse: collapse;
-    margin-top: 20px;
-}
-
-.styled-table-k th, .styled-table-k td {
-    border: 1px solid black;
-    padding: 10px;
-    text-align: center;
-}
-
-/* Estilos para el contenedor de la predicción con k */
+/* Estilos para el contenedor */
 .prediccion-con-k-container {
-    margin-top: 20px;
-    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh; /* Ocupa el 100% de la altura de la ventana */
+}
+
+/* Estilos para la tabla */
+.styled-table-k {
+    width: 50%; /* Ancho de la tabla */
+    border-collapse: collapse;
+    table-layout: fixed;
+    margin: 20px;
+    font-family: Arial, sans-serif;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.styled-table-k th,
+.styled-table-k td {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #000;
+    width: 50%; /* Ancho igual para ambas columnas */
+}
+
+.styled-table-k th {
+    background-color: #f2f2f2;
+}
+
+.styled-table-k tbody tr {
+    background-color: #f9f9f9;
 }
 
 

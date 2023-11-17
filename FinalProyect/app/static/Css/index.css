@@ -14,6 +14,7 @@
     align-items: center;
     min-height: 100vh;
     background: linear-gradient(45deg, #b54c4c, #624166, #131313);
+    /* background-color: #0B3846; */
  }
 
  .container .img_container{
