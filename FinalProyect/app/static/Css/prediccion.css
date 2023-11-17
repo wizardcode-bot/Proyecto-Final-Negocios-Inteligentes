@@ -123,6 +123,59 @@ h1{
     background-color: #2980b9;
 }
 
+/* formulario de la sección formulario.html*/
+.formularioFinal {
+    max-width: 400px;
+    margin: 20px;
+    margin-top: 40px ;
+    margin-left: 40px ;
+    margin-bottom: 100px;
+    font-size: larger;
+    padding: 30px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+    vertical-align: top; /* Para alinear la parte superior */
+    width: 45%; /* Ancho del formulario */
+    /* position: fixed; */
+}
+
+.formularioFinal label {
+    display: block;
+    margin-bottom: 8px;
+    color: #000;
+}
+
+.formularioFinal input[type="text"],
+.formularioFinal input[type="number"] {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid #56BFB5;
+}
+
+.formularioFinal input[type="text"]:focus,
+.formularioFinal input[type="number"]:focus {
+    outline: none;
+    border-color: #3498db;
+}
+
+.formularioFinal button[type="submit"] {
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.formularioFinal button[type="submit"]:hover {
+    background-color: #2980b9;
+}
+
 
 /* tablas con los filtros de departamentos y municipios */
 .filtros_tablas {
@@ -329,8 +382,8 @@ h1{
 }
 
 .linea-horizontal {
-    border: 2px solid #000000; /* color y grosor de la línea */
-    margin: 20px 0; /* margen superior e inferior para separar del contenido */ 
+    border: 2px solid #F3EEEA; /* color y grosor de la línea */
+    margin: 30px 30px; /* margen superior e inferior para separar del contenido */ 
 }
 
 /* Estilos para la tabla estimacion_con_k */

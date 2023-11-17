@@ -54,16 +54,16 @@
         </tbody>
     </table>
 
-    <form class="formulario" method="post" action="/soluciones_g">
+    <form class="formularioFinal" method="post" action="/soluciones_g">
 
         <label for="nombre">Ingrese el Lugar a filtrar</label>
         <input type="text" name="nombre" value="{{ nombre }}" required>
 
         <label for="rangoPrediccion">Mes para predicción con regresion:</label>
-        <input type="number" name="rangoPrediccion" min="13" max="16" required><br>
+        <input type="number" name="rangoPrediccion" min="13" max="17" required><br>
 
         <label for="rangoPrediccion">Mes para predicción con k:</label>
-        <input type="number" name="rango_k" min="13" max="23" required><br>
+        <input type="number" name="rango_k" min="13" max="24" required><br>
 
         <button type="submit">Realizar Predicción</button>
     </form>
