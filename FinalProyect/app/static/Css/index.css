@@ -12,17 +12,16 @@
  body{
     display: flex;
     align-items: center;
-    justify-content: center;
     min-height: 100vh;
-    margin-top: 100px; 
-    background: linear-gradient(to bottom right, #AED6F1, #F9EBB2);
+    background: linear-gradient(45deg, #b54c4c, #624166, #131313);
     /* background-color: #0B3846; */
  }
 
  .container .img_container{
-    width: 550px;
-    height: 450px;
-    margin-bottom: 20px;
+    width: 570px;
+    height: 470px;
+    margin-bottom: 25px;
+    margin-left: 50px;
  }
  .container .thumbnail_container .thumbnail {
     width: 130px;
@@ -32,9 +31,11 @@
     object-fit: cover;
     opacity: 0.7;
     transition: .1s;
-    border: 3px solid #000; /* Agregar un borde de 2px sólido en color negro */
+    border: 3px solid #ffffff; /* Agregar un borde de 2px sólido en color negro */
 }
-
+.left{
+    margin-left: 60px;
+}
 .container .thumbnail_container .thumbnail:hover {
     opacity: 1;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Añadir una pequeña sombra al hacer hover */
@@ -47,7 +48,7 @@
     border-radius: 10px; /* Agregar bordes redondeados */
     box-shadow: 0 5px 5px rgba(1, 23, 46, 0.6);
     object-fit: cover;
-    border: 5px solid rgb(68, 0, 0); /* Agregar un borde de 2px sólido en color negro */
+    border: 5px solid rgb(255, 255, 255); /* Agregar un borde de 2px sólido en color negro */
 }
 .active{
     opacity: 1 !important;
@@ -252,3 +253,30 @@ nav ul li a .cuarto {
 	  display: none;
 	}
   }
+.home{
+    height: 100vh;
+    display:flex;
+    align-items: center;
+    padding: 0 10%;
+}
+
+.home-content{
+    max-width: 600px;
+}
+.home-content h1{
+    font-family: monospace;
+    font-size: 70px;
+    font-weight: 700;
+    color: white;
+}
+.home-content h3{
+    font-family: monospace;
+    font-size: 32px;
+    font-weight: 700;
+    color: #00abf0;
+}
+.home-content p{
+    font-family: monospace;
+    font-size: 16px;
+    color: white;
+}
