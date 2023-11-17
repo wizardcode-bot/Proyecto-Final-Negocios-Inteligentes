@@ -6,7 +6,8 @@
 
 body {
     /* background: linear-gradient(to bottom right, #AED6F1, #F9EBB2); */
-    background: linear-gradient(45deg, #b54c4c, #624166, #131313);
+    /* background: linear-gradient(45deg, #b54c4c, #624166, #131313); */
+    background: #0B3846;
 } 
 
 .cuadro {
@@ -72,9 +73,10 @@ h1{
 /* Estilos para el formulario con la clase "formulario" */
 .formulario {
     max-width: 400px;
-    margin: 20px ;
+    margin: 20px;
     margin-top: 40px ;
     margin-left: 20px ;
+    margin-bottom: 100px;
     font-size: larger;
     padding: 30px;
     background-color: #f9f9f9;
@@ -332,22 +334,38 @@ h1{
 }
 
 /* Estilos para la tabla estimacion_con_k */
-.styled-table-k {
-    width: 40%;
-    border-collapse: collapse;
-    margin-top: 20px;
-}
-
-.styled-table-k th, .styled-table-k td {
-    border: 1px solid black;
-    padding: 10px;
-    text-align: center;
-}
-
-/* Estilos para el contenedor de la predicción con k */
+/* Estilos para el contenedor */
 .prediccion-con-k-container {
-    margin-top: 20px;
-    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh; /* Ocupa el 100% de la altura de la ventana */
+}
+
+/* Estilos para la tabla */
+.styled-table-k {
+    width: 50%; /* Ancho de la tabla */
+    border-collapse: collapse;
+    table-layout: fixed;
+    margin: 20px;
+    font-family: Arial, sans-serif;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.styled-table-k th,
+.styled-table-k td {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #000;
+    width: 50%; /* Ancho igual para ambas columnas */
+}
+
+.styled-table-k th {
+    background-color: #f2f2f2;
+}
+
+.styled-table-k tbody tr {
+    background-color: #f9f9f9;
 }
 
 
