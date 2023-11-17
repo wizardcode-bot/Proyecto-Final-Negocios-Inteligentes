@@ -16,6 +16,7 @@
     min-height: 100vh;
     margin-top: 100px; 
     background: linear-gradient(to bottom right, #AED6F1, #F9EBB2);
+    /* background-color: #0B3846; */
  }
 
  .container .img_container{

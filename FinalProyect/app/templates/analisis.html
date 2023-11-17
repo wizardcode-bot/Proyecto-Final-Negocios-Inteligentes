@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='Css/analisis.css') }}">
+    <title>Analisis</title>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">ANÁLISIS DE DATOS</div>
+        <nav class="navigation">
+            <ul>
+                <li><a href="{{ url_for('index') }}"><span class="primero"><i class="icon icon-home3"></i></span>INICIO</a></li>
+                <li><a href="#"><span class="segundo"><i class="icon icon-lab"></i></span>BRILLO SOLAR</a>
+                    <ul>
+                        <li><a href="{{ url_for('medicion') }}">MEDICIÓN</a></li>
+                        <li><a href="{{ url_for('formula') }}">FÓRMULA</a></li>
+                    </ul>
+                </li>
+                <li><a href="{{ url_for('prediccion') }}"><span class="tercero"><i class="icon icon-stats-dots"></i></span>PREDICCIÓN</a></li>
+                <li><a href="{{ url_for('analisis') }}"><span class="cuarto"><i class="icon icon-book"></i></span>SOLUCIONES GENERALES</a></li>
+            </ul>
+        </nav>
+    </header>
+</body>
+</html>

@@ -109,6 +109,11 @@ def brillo_solar():
     # Puedes realizar lógica específica para esta página si es necesario
     return render_template('brillo_solar.html')
 
+@app.route('/analisis')
+def analisis():
+    # Puedes realizar lógica específica para esta página si es necesario
+    return render_template('analisis.html')
+
 @app.route('/soluciones_g', methods=['GET', 'POST'])
 def soluciones_g():
 
