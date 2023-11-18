@@ -11,7 +11,7 @@
 /* Estilos generales */
 body {
     font-family: Georgia, 'Times New Roman', Times, serif;
-	background: linear-gradient(to bottom right, #AED6F1, #F9EBB2);
+	background: linear-gradient(45deg, #b54c4c, #624166, #131313);
     margin: 0;
     padding: 0;
     line-height: 1.6; /* Ajusta el espaciado entre líneas */
