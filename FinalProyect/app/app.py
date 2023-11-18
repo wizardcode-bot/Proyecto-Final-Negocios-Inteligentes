@@ -208,7 +208,6 @@ def soluciones_g():
     columnas_meses = ['ENE', 'FEB', 'MAR', 'ABR', 'MAY', 'JUN', 'JUL', 'AGO', 'SEP', 'OCT', 'NOV', 'DIC']
     columnas_meses_numero = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 
-    #Meses = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre']
     BrilloSolar = [ENE, FEB, MAR, ABR, MAY, JUN, JUL, AGO, SEP, OCT, NOV, DIC]
 
     # Organizar los datos de menor a mayor
@@ -240,8 +239,6 @@ def soluciones_g():
     coeficientes = np.polyfit(columnas_meses_numero, arreglo_ordenado, 3)
     #Se crea una función polinómica a partir de los coeficientes
     funcPolinomial = np.poly1d(coeficientes)
-    #print(coeficientes)
-    print(funcPolinomial)
 
     print("\n PREDICCIÓN CON MODELO DE REGRESIÓN POLINOMIAL \n")
     # rangoPrediccion = int(input("A que mes quiere predecir (13 - 15): "))
@@ -260,7 +257,7 @@ def soluciones_g():
     plt.figure(figsize=(10, 5))  # dimensiones
     # modelo de predicción datos anteriores
     plt.plot(columnas_meses_numero, arreglo_ordenado , 'o-', color='red')
-    plt.xlabel('Meses')
+    plt.xlabel('Tiempo')
     plt.ylabel('Brillo Solar')
     plt.title('Modelo de Regresión Polinómica y Predicción')
     plt.grid(True)
@@ -275,7 +272,7 @@ def soluciones_g():
     plt.figure(figsize=(10, 5))  # dimensiones
     # modelo de predicción datos anteriores
     plt.plot(columnas_meses_numero, arreglo_ordenado , 'o-', color='red')
-    plt.xlabel('Meses')
+    plt.xlabel('Tiempo')
     plt.ylabel('Brillo Solar')
     plt.title('Datos de Brillo Solar registrados')
     plt.grid(True)
@@ -286,50 +283,35 @@ def soluciones_g():
 
     # MODELO DE REGRESIÓN POLINOMIAL Y PREDICCIÓN CON "K"
     # Ajusta manualmente el valor de k
-    k_factor = 0.9  
-    k = k_factor * (math.log(arreglo_ordenado[11] / arreglo_ordenado[0]) / 11)
+    k_factor = 1  
+    k = k_factor * (math.log(arreglo_ordenado[-1] / arreglo_ordenado[0]) / len(arreglo_ordenado))
 
-    print("\n PREDICCIÓN CON 'K' ")
     print("\nK tiene un valor de: ", k)
-    # rango_k = float(input("\nA que mes quiere predecir (13 - 20): ")) #Entre 2000 y 2020
-    if (rango_k > 2026):
-        print("Número erróneo")
-    #numero4= rango_k - 2000
-    Estimacion = arreglo_ordenado[0] * math.exp(k * rango_k)
-    print("\nSu prediccion es de:", round(Estimacion, 4))
 
-    # MODELO DE REGRESIÓN POLINÓMICA
-    # Se ajustan las variables a un polinomio de grado 5
-    coeficientes = np.polyfit(columnas_meses_numero, arreglo_ordenado, 6)
-    # Se crea una función polinómica a partir de los coeficientes
-    func_polinomial = np.poly1d(coeficientes)
+    estimacion = arreglo_ordenado[0] * np.exp(k * rango_k)
+    print("\nLa estimación para el año será:", round(estimacion, 4))
 
-    # Calcula los valores de la función polinómica en el rango dado
-    rango_polinomial = np.linspace(min(columnas_meses_numero), max(columnas_meses_numero), 100)
-    regresion_polinomial = func_polinomial(rango_polinomial)
+    # Gráfica de datos existentes y predicción
+    plt.figure(figsize=(8, 6))
+    plt.scatter(columnas_meses_numero, arreglo_ordenado, label='Datos existentes', color='blue')
+    
+    # Se generan los valores para la predicción
+    rango_prediccion = np.linspace(1, rango_k, 100)
+    prediccion_con_k = arreglo_ordenado[0] * np.exp(k * rango_prediccion)
 
-    # MODELO DE PREDICCIÓN CON "k"
-    # Calcula los valores de la función exponencial en el rango dado
-    rango_prediccion = range(12, int(rango_k) + 1)
-    prediccion_k = arreglo_ordenado[0] * np.exp(k * np.array(rango_prediccion))
-
-    # Gráfica de la regresión polinómica y la predicción con "k"
-    plt.figure(figsize=(10, 5))
-    plt.plot(columnas_meses_numero, arreglo_ordenado, 'o-', color='red')
-    plt.xlabel('Meses')
+    plt.plot(rango_prediccion, prediccion_con_k, label='Predicción', color='red')
+    plt.xlabel('Tiempo')
     plt.ylabel('Brillo Solar')
-    plt.title('Regresión Polinómica y Predicción con "k"')
+    plt.title('Predicción con Modelo Exponencial')
+    plt.legend()
     plt.grid(True)
-    plt.plot(rango_polinomial, regresion_polinomial, '--', color='green')  # modelo de regresión
-    plt.plot(rango_prediccion, prediccion_k, '--', color='blue')  # datos predecidos con "k" ajustado
-    plt.legend(['Datos', 'Regresión Polinómica', 'Predicción con "k"'])
     img3 = BytesIO()
     plt.savefig(img3, format='png')
     img3.seek(0)
     imagen_prediccion_k = base64.b64encode(img3.read()).decode() 
 
     
-    return render_template('soluciones_g.html', data=resultadoNombre, datos=datos_ordenados, mes=mes, valor=valor, img1=imagen_prediccion, img2= imagen_datos, prediccion=prediccion, resultado_nombre=resultado_nombre_lista, departamento=departamento_seleccionado, municipio=municipio_seleccionado, nombre=nombre_seleccionado, moda=moda, media=media, mediana=mediana, desvEst=desvEst, estimacion_con_k=Estimacion, img3=imagen_prediccion_k)
+    return render_template('soluciones_g.html', data=resultadoNombre, datos=datos_ordenados, mes=mes, valor=valor, img1=imagen_prediccion, img2= imagen_datos, prediccion=prediccion, resultado_nombre=resultado_nombre_lista, departamento=departamento_seleccionado, municipio=municipio_seleccionado, nombre=nombre_seleccionado, moda=moda, media=media, mediana=mediana, desvEst=desvEst, estimacion_con_k=estimacion, img3=imagen_prediccion_k)
 
 #Si está en la página principal, llama a la función
 if __name__=='__main__':
