@@ -10,7 +10,7 @@
 
 body {
     font-family: Georgia, 'Times New Roman', Times, serif;
-	background: linear-gradient(45deg, #b54c4c, #624166, #131313);
+	background: linear-gradient(to bottom right, #AED6F1, #F9EBB2);
     margin: 0;
     padding: 0;
     line-height: 2.0; /* Ajusta el espaciado entre líneas */
@@ -203,5 +203,5 @@ nav ul li a .cuarto {
   }
 
 .color{
-	color: white;
+	color: black;
 }

@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@900&display=swap');
+
 *,
 *::before,
 *::after
@@ -7,11 +8,80 @@
 	padding:0;
     box-sizing: inherit;
 }
-
-body{
-	background-color: #0B3846;
+/* Estilos generales */
+body {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+	background: linear-gradient(to bottom right, #AED6F1, #F9EBB2);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6; /* Ajusta el espaciado entre líneas */
 }
 
+.titulo {
+	background-color: #333;
+    color: rgb(240, 240, 240);
+    text-align: center;
+    padding: 20px;
+	padding-top: 120px;
+	
+	
+}
+
+.content h2,
+.content p,
+.content ol,
+.content ul {
+    margin-bottom: 25px; /* Ajusta el margen inferior */
+    margin-left: 20px;   /* Ajusta el margen izquierdo */
+    margin-right: 20px;  /* Ajusta el margen derecho */
+}
+
+.content img {
+    margin-bottom: 20px; /* Ajusta el margen inferior de las imágenes */
+	border-radius: 5px;
+}
+
+.titulo h1 {
+    font-size: 40px;
+}
+
+main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.content {
+    max-width: 1700px; /* Ajusta el valor según sea necesario */
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+img {
+    max-width: 100%;
+    height: auto;
+    display: block; /* Para evitar espacios no deseados */
+    margin: 0 auto; /* Centrar la imagen horizontalmente */
+}
+
+/* Media query para pantallas más pequeñas (por ejemplo, dispositivos móviles) */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 28px;
+    }
+    
+    main {
+        padding: 10px;
+    }
+    
+    .content {
+        padding: 10px;
+    }
+}
+
+/*Nav*/
 header{
     position: absolute;
     top: 0;
@@ -141,4 +211,3 @@ nav ul li a .cuarto {
 	  display: none;
 	}
   }
-
