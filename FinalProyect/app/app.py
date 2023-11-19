@@ -45,7 +45,7 @@ def municipios():
         # Valores predeterminados o manejar el caso en que no se haya enviado el formulario aún
         departamento_seleccionado = ""
 
-       # Ruta del archivo Excel
+    # Ruta del archivo Excel
     ruta = 'C:\\Users\\HOME\\Downloads\\finalPoyectNegocios\\archivos\\DatosCompletos.xlsx'
 
     # Cargar el archivo Excel en un DataFrame
@@ -235,21 +235,15 @@ def soluciones_g():
     print("La desviacion estandar de el Brillo Solar es:", round(desvEst, 4))
     
     #MODELO DE REGRESION POLINOMICA 
-    #(Se ajustan las variables a un polinomio de grado 5)
+    #(Se ajustan las variables a un polinomio de grado n)
     coeficientes = np.polyfit(columnas_meses_numero, arreglo_ordenado, 3)
     #Se crea una función polinómica a partir de los coeficientes
     funcPolinomial = np.poly1d(coeficientes)
 
-    print("\n PREDICCIÓN CON MODELO DE REGRESIÓN POLINOMIAL \n")
-    # rangoPrediccion = int(input("A que mes quiere predecir (13 - 15): "))
-
     # Calcula los valores de la función polinómica en el rango dado
     prediccion = funcPolinomial(rangoPrediccion)
 
-
-    # formato de presentación 2f, 2 decimales despues del punto
-    print(f"La cantidad de Brillo Solar para el mes {rangoPrediccion} sera de: {prediccion:.2f}")
-    # Modelo Prediccion
+    # Prediccion
     rangoPrediccion = range(12,  rangoPrediccion + 1)
     prediccionGrafica = funcPolinomial(rangoPrediccion)
 
@@ -281,20 +275,16 @@ def soluciones_g():
     img2.seek(0)
     imagen_datos = base64.b64encode(img2.read()).decode() 
 
-    # MODELO DE REGRESIÓN POLINOMIAL Y PREDICCIÓN CON "K"
-    # Ajusta manualmente el valor de k
+    # MODELO EXPONENCIAL
     k_factor = 1  
     k = k_factor * (math.log(arreglo_ordenado[-1] / arreglo_ordenado[0]) / len(arreglo_ordenado))
 
-    print("\nK tiene un valor de: ", k)
-
     estimacion = arreglo_ordenado[0] * np.exp(k * rango_k)
-    print("\nLa estimación para el año será:", round(estimacion, 4))
 
     # Gráfica de datos existentes y predicción
     plt.figure(figsize=(8, 6))
     plt.scatter(columnas_meses_numero, arreglo_ordenado, label='Datos existentes', color='blue')
-    
+
     # Se generan los valores para la predicción
     rango_prediccion = np.linspace(1, rango_k, 100)
     prediccion_con_k = arreglo_ordenado[0] * np.exp(k * rango_prediccion)
