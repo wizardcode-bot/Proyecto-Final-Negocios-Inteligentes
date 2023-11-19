@@ -3,15 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='Css/analisis.css') }}">
-    <title>Analisis</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='Css/formula.css') }}">
+    <title>Medición de Radiación Solar</title>
 </head>
+
 <body>
     <header class="header">
         <div class="logo">ANÁLISIS DE DATOS</div>
         <nav class="navigation">
             <ul>
-                <li><a href="{{ url_for('index') }}"><span class="primero"><i class="icon icon-home3"></i></span>INICIO</a></li>
+                <li><a href="{{ url_for('index') }}"><span class="primero"><i class="icon icon-home"></i></span>INICIO</a></li>
                 <li><a href="#"><span class="segundo"><i class="icon icon-lab"></i></span>BRILLO SOLAR</a>
                     <ul>
                         <li><a href="{{ url_for('medicion') }}">MEDICIÓN</a></li>
@@ -19,9 +20,85 @@
                     </ul>
                 </li>
                 <li><a href="{{ url_for('prediccion') }}"><span class="tercero"><i class="icon icon-stats-dots"></i></span>PREDICCIÓN</a></li>
-                <li><a href="{{ url_for('analisis') }}"><span class="cuarto"><i class="icon icon-book"></i></span>SOLUCIONES GENERALES</a></li>
+                <li><a href="{{ url_for('analisis') }}"><span class="cuarto"><i class="icon icon-stats-bars"></i></span>SOLUCIONES GENERALES</a></li>
             </ul>
         </nav>
     </header>
+    <div class="titulo">
+        <h1>ANALISIS GENERAL</h1>
+    </div>
+
+    <main>
+
+        <section class="content">
+            <h2>MODELO LINEAL</h2>
+            <p>
+                Un modelo lineal es un tipo de modelo matemático que asume una relación lineal entre las variables de entrada y la variable de salida. En otras palabras, se representa la relación entre las variables como una línea recta.</p>
+                <img src="{{ url_for('static', filename='img index/lineal.png') }}" alt="Modelo Lineal">
+                <h2>MODELO POLINOMIAL</h2>
+                <p>Un modelo polinomial es una extensión del modelo lineal, pero en lugar de representar la relación entre variables como una línea recta, utiliza una función polinomial para ajustarse a los datos. La forma general de un modelo polinomial de grado N</p>
+                <img src="{{ url_for('static', filename='img index/polinomial.jpg') }}" alt="">
+                <img src="{{ url_for('static', filename='img index/polineal.jpg') }}" alt="">
+        </section>
+
+        <section class="content">
+            <h2>PORQUE ESTOS MODELOS </h2>
+        </section>
+
+        <section class="content">
+            <h2>ENFRIAMIENTO DEL PLANETA</h2>
+            <img src="{{ url_for('static', filename='img index/teoria1.jpg') }}" alt="">
+            <p>Existen teorías que plantean la posibilidad de un enfriamiento futuro de la Tierra, vinculadas a diversos factores climáticos. Una de estas teorías destaca la influencia de los ciclos solares, sugiriendo que periodos de mínima actividad solar podrían resultar en una disminución de la radiación solar, contribuyendo así al enfriamiento climático. También se ha explorado el papel de aerosoles atmosféricos, tanto naturales como antropogénicos, que podrían bloquear la radiación solar y tener efectos de enfriamiento.</p>
+            <p>Además, cambios en la circulación oceánica, como variaciones en la Corriente del Golfo, han sido asociados con posibles alteraciones climáticas, llevando a enfriamientos regionales. Sin embargo, es esencial reconocer que estas teorías no son concluyentes y no pueden predecir con certeza los patrones climáticos futuros.</p>
+            <h2>CALENTAMIENTO GLOBAL</h2>
+            <img src="{{ url_for('static', filename='img index/teoria2.jpg') }}" alt="">
+            <p>El calentamiento global se refiere al aumento sostenido de las temperaturas promedio en la Tierra, y está asociado principalmente con la actividad humana que libera gases de efecto invernadero, como el dióxido de carbono, a la atmósfera. Este fenómeno ha llevado a consecuencias significativas, incluyendo el deshielo de glaciares y casquetes polares, el aumento del nivel del mar, eventos climáticos extremos y cambios en patrones meteorológicos.</p>
+            <p>Las actividades humanas, como la quema de combustibles fósiles y la deforestación, han intensificado el efecto invernadero, atrapando más calor en la atmósfera y contribuyendo al cambio climático. A medida que el planeta continúa calentándose, se prevé un aumento en la frecuencia e intensidad de fenómenos climáticos extremos, así como impactos en la biodiversidad, la disponibilidad de agua y la seguridad alimentaria.</p>
+        </section>
+        
+        <section class="content">
+            <h2>ENERGIA ELECTRICA EN COLOMBIA</h2>
+            <img src="{{ url_for('static', filename='img index/energiaelec.jpg') }}" alt="">
+            <p>La situación de Colombia, los analistas coinciden en que los efectos climáticos le están siendo determinantes para los precios de la energía. Además, explican que cada vez que el país atraviesa por el fenómeno del Niño, los valores tienden a elevarse.</p>
+            <p>En relación con la demanda por zonas geográficas, el máximo crecimiento en 2022 se presentó en Oriente con un 7,97 %, seguida por Guaviare con un 7,83 % y Antioquia con un 7,35 %.</p>
+            <p>Guaviare es la región del país con mayor crecimiento en demanda de energía eléctrica, durante diciembre presentó un crecimiento del 11,29 %; seguida por Caribe, con 7,08 %; Oriente, con 4,91 %; Centro, con 4,83 %; Antioquia, 4,73 %; THC (Tolima, Huila, Caquetá), con 4,62 %; CQR (Caldas, Quindío y Risaralda), con un 3 %; Sur, con 1,94 %; y Valle, con 0,31 %. Respecto a Chocó, presentó un decrecimiento del 0,31 %.</p>
+            <img src="{{ url_for('static', filename='img index/estrato.jpg') }}" alt="">
+            <p></p>
+        </section>
+
+        <section class="content">
+            <h2>FALTA DE ENERGIA ELECTRICA EN COLOMBIA</h2>
+            <p>Muchos de los que estamos leyendo ahora, probablemente estamos acostumbrados a contar con un servicio de energía de manera regular. Pero no es así para todos. En muchas comunidades remotas de Colombia nunca han tenido energía eléctrica o cuentan con ella pero por horas nada mas. Por eso, la energía tiene que ver mucho con la pobreza.</p>
+            <p>Hay más de 400.000 hogares sin acceso a la energía eléctrica en el país, con Vichada, La Guajira, Amazonas, Guainía, entre otros.</p>
+            <img src="{{ url_for('static', filename='img index/velas.jpg') }}" alt="">
+            <p>El mapa de 1.710 poblados que aún se alumbran con velas en Colombia.</p>
+            <img src="{{ url_for('static', filename='img index/partescol.png') }}" alt="">
+            <img src="{{ url_for('static', filename='img index/zonas.png') }}" alt="">
+            <p>La falta de acceso a la energía limita también el acceso a otros servicios o electrodomésticos básicos como refrigerador para guardar los alimentos o bombillas para iluminar las viviendas por las noches. Asimismo, puede limitar el desarrollo de negocios. En algunas comunidades han tenido que esperar décadas para poder contar con este servicio.</p>
+        </section>
+        <section class="content">
+            <h2>IMPLEMENTAR PANELES SOLARES</h2>
+            <img src="{{ url_for('static', filename='img index/panelsolar.jpg') }}" alt="">
+            <p>El panel solar tiene una capacidad de generación de 300 vatios. Esto significa que en condiciones ideales, el panel puede generar 300 vatios de electricidad por hora cuando está expuesto a la luz solar directa.</p>
+            <p>El panel solar tiene un costo de 300,000 pesos colombianos.</p>
+            <p>El costo de un kilovatio por hora (kWh) en Colombia es de 233 pesos colombianos.</p>
+            <p>Si el panel solar genera 300 vatios por hora, esto es equivalente a 0.3 kilovatios por hora (kWh). En términos de costos, si consideramos la capacidad del panel durante una hora, el costo asociado sería de 0.3 kWh * 233 pesos/kWh.</p>
+            <h3>Ejemplo</h3>
+            <p>Decides instalar paneles solares en tu hogar. Durante el día, generan electricidad para tus necesidades diarias. Si producen más de lo que consumes, ese excedente puede alimentar la red eléctrica. Por la noche, usas la electricidad de la red, pero tu contribución solar reduce la necesidad de energía no renovable. A largo plazo, los paneles solares no solo ahorran en costos, sino que también promueven la adopción de energías limpias y sostenibles. Este ejemplo muestra cómo la energía solar residencial apoya la transición hacia fuentes de energía alternativas y más ecológicas.</p>
+            <p>Aunque la inversión inicial en paneles solares puede ser significativa, a largo plazo, puedes ahorrar en tus facturas de electricidad y contribuir a la sostenibilidad ambiental al utilizar energía renovable.</p>
+        </section>
+        <section class="content">
+            <h2>FENOMENO DEL NIÑO Y FENOMENO DE LA NIÑA</h2>
+            <img src="{{ url_for('static', filename='img index/Fenomeno.jpg') }}" alt="">
+        </section>
+        <section class="content">
+            <h2>ENFERMEDADES POR EL CONTACTO SOLAR</h2>
+            <img src="{{ url_for('static', filename='img index/piel.jpg') }}" alt="">
+            <p>-Quemaduras solares</p>
+            <p>-Envejecimiento prematuro de la piel</p>
+            <p>-Cáncer de piel</p>
+            <p>-Daño ocula</p>
+        </section>
+    </main>
 </body>
 </html>
