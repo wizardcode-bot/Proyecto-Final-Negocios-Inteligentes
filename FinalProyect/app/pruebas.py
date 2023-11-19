@@ -117,40 +117,29 @@ print("La desviacion estandar de el Brillo Solar es:", round(desvEst, 4))
 
   # Calcular el resultado
 # Ajusta manualmente el valor de k
-k_factor = 0.9  # Puedes ajustar este valor según sea necesario
-k = k_factor * (math.log(arreglo_ordenado[11] / arreglo_ordenado[0]) / 11)
+k_factor = 1  
+k = k_factor * (math.log(arreglo_ordenado[-1] / arreglo_ordenado[0]) / len(arreglo_ordenado))
 
 print("\nK tiene un valor de: ", k)
-numero3 = float(input("\nIngresa la cantidad de años que quieres estimar: ")) #Entre 2000 y 2020
-if (numero3 > 2026):
-    print("Número erróneo")
-#numero4= numero3 - 2000
-Estimacion = arreglo_ordenado[0] * math.exp(k * numero3)
-print("\nSu prediccion es de:", round(Estimacion, 4))
+numero3 = float(input("\nIngresa la cantidad de años que quieres estimar: "))  # Años adicionales a predecir
+if numero3 < 0:
+    print("Ingrese un número positivo para los años")
+else:
+    estimacion = arreglo_ordenado[-1] * np.exp(k * numero3)
+    print("\nLa estimación para el año será:", round(estimacion, 4))
 
-# MODELO DE REGRESIÓN POLINÓMICA
-# Se ajustan las variables a un polinomio de grado 5
-coeficientes = np.polyfit(columnas_meses_numero, arreglo_ordenado, 6)
-# Se crea una función polinómica a partir de los coeficientes
-func_polinomial = np.poly1d(coeficientes)
+    # Gráfica de datos existentes y predicción
+    plt.figure(figsize=(8, 6))
+    plt.scatter(columnas_meses_numero, arreglo_ordenado, label='Datos existentes', color='blue')
+    
+    # Se generan los valores para la predicción
+    rango_prediccion = np.linspace(1, 12 + numero3, 100)
+    prediccion = arreglo_ordenado[-1] * np.exp(k * (rango_prediccion - 12))
 
- # Calcula los valores de la función polinómica en el rango dado
-rango_polinomial = np.linspace(min(columnas_meses_numero), max(columnas_meses_numero), 100)
-regresion_polinomial = func_polinomial(rango_polinomial)
-
- # MODELO DE PREDICCIÓN CON "k"
-# Calcula los valores de la función exponencial en el rango dado
-rango_prediccion = range(12, int(numero3) + 1)
-prediccion_k = arreglo_ordenado[0] * np.exp(k * np.array(rango_prediccion))
-
-# Gráfica de la regresión polinómica y la predicción con "k"
-plt.figure(figsize=(10, 5))
-plt.plot(columnas_meses_numero, arreglo_ordenado, 'o-', color='red')
-plt.xlabel('Meses')
-plt.ylabel('Brillo Solar')
-plt.title('Regresión Polinómica y Predicción con "k"')
-plt.grid(True)
-plt.plot(rango_polinomial, regresion_polinomial, '--', color='green')  # modelo de regresión
-plt.plot(rango_prediccion, prediccion_k, '--', color='blue')  # datos predichos con "k" ajustado
-plt.legend(['Datos', 'Regresión Polinómica', 'Predicción con "k"'])
-plt.show()
+    plt.plot(rango_prediccion, prediccion, label='Predicción', color='red')
+    plt.xlabel('Meses')
+    plt.ylabel('Brillo Solar')
+    plt.title('Predicción con Modelo Exponencial')
+    plt.legend()
+    plt.grid(True)
+    plt.show()
