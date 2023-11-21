@@ -96,22 +96,18 @@ def formulario():
 
 @app.route('/medicion')
 def medicion():
-    # Puedes realizar lógica específica para esta página si es necesario
     return render_template('medicion.html')
 
 @app.route('/formula')
 def formula():
-    # Puedes realizar lógica específica para esta página si es necesario
     return render_template('formula.html')
 
 @app.route('/brillo_solar')
 def brillo_solar():
-    # Puedes realizar lógica específica para esta página si es necesario
     return render_template('brillo_solar.html')
 
 @app.route('/analisis')
 def analisis():
-    # Puedes realizar lógica específica para esta página si es necesario
     return render_template('analisis.html')
 
 @app.route('/soluciones_g', methods=['GET', 'POST'])
@@ -125,7 +121,7 @@ def soluciones_g():
      rangoPrediccion = int(request.form.get("rangoPrediccion"))
      rango_k = int(request.form.get("rango_k"))
     else:
-        # Valores predeterminados o manejar el caso en que no se haya enviado el formulario aún
+        # Valores predeterminados a manejar el caso en que no se haya enviado el formulario aún
         departamento_seleccionado = ""
         municipio_seleccionado = ""
         nombre_seleccionado = ""
